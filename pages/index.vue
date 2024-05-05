@@ -37,7 +37,7 @@
     </div>
     <div v-if="isResult">
       <div class="position-relative">
-        <div v-confetti class="position-absolute top-0 start-50 translate-middle-x"</div>
+        <div v-confetti v-if="isConfetti" class="position-absolute top-0 start-50 translate-middle-x"></div>
       </div>
       <div class="my-3 mt-2 px-2 text-center bg-white p-2 alert p-4">
         <div class="fs-6">
@@ -51,7 +51,7 @@
           <div class="fs-6 text-grey">{{ result.ttl }}</div>
           <div class="fs-6 text-grey">{{ result.kelas }}</div>
           <div class="fs-6 mb-3 text-grey">{{ result.kompetensi }}</div>
-          <span class="fs-6">dinyatakan <strong><em>"{{ result.keterangan }}"</em></strong></span>
+          <span class="fs-6">dinyatakan <span @click="moreConfetti" class="keterangan"><em>"{{ result.keterangan }}"</em></span></span>
           <p class="fs-6">
             Dari satuan Pendidikan SMK Negeri 4 Tasikmalaya Tahun Pelajaran
             {{ tahun-1 }}/{{ tahun }}.
@@ -84,6 +84,7 @@ const result = ref([]);
 const isResult = ref(false);
 const tahun = new Date().getFullYear()
 const checking = ref(false)
+const isConfetti = ref(false)
 
 const onPeriksa = async () => {
   mismatch.value = false
@@ -97,6 +98,7 @@ const onPeriksa = async () => {
     result.value = data
     isResult.value = true
     checking.value = false
+    isConfetti.value = true
   } 
   if(error) {
     mismatch.value = true
@@ -111,5 +113,12 @@ const reset = () => {
   tgl_lahir.value = ""
   mismatch.value = false
   checking.value = false
+  isConfetti.value = false
+}
+
+const moreConfetti = async () => {
+  isConfetti.value = false
+  await Promise.resolve()
+  isConfetti.value = true
 }
 </script>

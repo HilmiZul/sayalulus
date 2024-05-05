@@ -132,4 +132,8 @@ canvas {
 .bg-result {
   background-color: #ffffffc4;
 }
+
+.keterangan {
+  cursor: pointer;
+}
 </style>
