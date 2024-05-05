@@ -2,13 +2,17 @@
   <div class="row">
     <div class="col-md-6 mx-auto mt-5">
       <div class="text-center fs-3 prototype mb-4">
-        About.
+        Tentang App.
       </div>
       <div  class="text-center">
         Website Pengumuman Kelulusan SMK Negeri 4 Tasikmalaya <br>
         Website ini diperuntukkan untuk menampilkan informasi kelulusan Siswa/i SMK Negeri 4 Tasikmalaya.
+        <div class="my-3 text-muted">Dibuat dengan <i class="bi bi-heart-fill"></i> oleh PPLG.</div>
       </div>
     </div>
   </div>
 </template>
 
+<script setup>
+useHead({ title: "Tentang App. / Info Kelulusan SMKN 4 Tasikmalaya" })
+</script>

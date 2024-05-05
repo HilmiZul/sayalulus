@@ -30,8 +30,8 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <router-link class="nav-link" to="/"><i class="bi bi-mortarboard-fill"></i> PENGUMUMAN</router-link>
-              <router-link class="nav-link" to="/about"><i class="bi bi-building"></i> ABOUT</router-link>
-              <router-link class="nav-link" to="/contact"><i class="bi bi-person-lines-fill"></i> CONTACT</router-link>
+              <router-link class="nav-link" to="/kontak"><i class="bi bi-person-lines-fill"></i> KONTAK</router-link>
+              <router-link class="nav-link" to="/tentang"><i class="bi bi-building"></i> TENTANG</router-link>
             </div>
           </div>
         </nav>

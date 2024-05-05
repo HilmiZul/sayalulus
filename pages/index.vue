@@ -75,6 +75,7 @@
 
 <script setup>
 import { vConfetti } from '@neoconfetti/vue';
+useHead({ title: "Info Kelulusan SMKN 4 Tasikmalaya" })
 const client = useSupabaseClient();
 const mismatch = ref(false);
 const NIS = ref("");
