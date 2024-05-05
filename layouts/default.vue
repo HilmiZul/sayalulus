@@ -30,7 +30,7 @@
 }
 body {
   color: #525252;
-  background: transparent url("../assets/img/bg.png") no-repeat center center fixed;
+  background: transparent url("../assets/img/bg-main.png") no-repeat center center fixed;
   font-family: "Quicksand-SemiBold";
   background-size: cover;
 }

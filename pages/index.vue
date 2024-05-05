@@ -40,7 +40,7 @@
         <div class="fs-6">
           Berdasarkan Surat Keputusan Kepala SMK Negeri 4 Tasikmalaya Nomor
           Nomor : 420/292.1/SMKN.4-Cabdin Wil. XII dan Keputusan hasil Rapat
-          Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 4 Mei 2023,
+          Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 3 Mei 2024,
           bahwa:
         </div>
         <div class="text-center">
@@ -51,7 +51,7 @@
           <span class="fs-6">dinyatakan <strong><em>"{{ result.keterangan }}"</em></strong></span>
           <p class="fs-6">
             Dari satuan Pendidikan SMK Negeri 4 Tasikmalaya Tahun Pelajaran
-            2022/2023.
+            {{ tahun-1 }}/{{ tahun }}.
           </p>
         </div>
       </div>
@@ -83,7 +83,7 @@ const tahun = new Date().getFullYear()
 const onPeriksa = async () => {
   mismatch.value = false
   const { data, error } = await client
-    .from("graduation2023")
+    .from("kelulusan2024")
     .select('*')
     .match({ nis: NIS.value, password: tgl_lahir.value })
     .single()
