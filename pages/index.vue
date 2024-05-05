@@ -12,13 +12,16 @@
           <div class="card-body">
             <form @submit.prevent="onPeriksa">
               <div class="input-group my-3">
-                <input v-model="NIS" type="text" class="form-control form-control-lg" placeholder="NIS" autofocus required />
+                <input v-model="NIS" type="text" class="form-control form-control-lg" placeholder="NIS" autofocus required :disabled="checking" />
               </div>
               <div class="input-group my-3">
-                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="PASSWORD" required />
+                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="PASSWORD" required :disabled="checking" />
               </div>
               <div v-if="mismatch" class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> NIS dan Password tidak cocok!</div>
-              <button class="btn btn-primary">PERIKSA</button>
+              <button class="btn btn-primary" :disabled="checking">
+                <span v-if="!checking">PERIKSA</span>
+                <span v-else><em>SEDANG MEMERIKSA...</em></span>
+              </button>
             </form>
           </div>
         </div>
@@ -79,9 +82,11 @@ const tgl_lahir = ref("");
 const result = ref([]);
 const isResult = ref(false);
 const tahun = new Date().getFullYear()
+const checking = ref(false)
 
 const onPeriksa = async () => {
   mismatch.value = false
+  checking.value = true
   const { data, error } = await client
     .from("kelulusan2024")
     .select('*')
@@ -90,9 +95,11 @@ const onPeriksa = async () => {
   if (data) {
     result.value = data
     isResult.value = true
+    checking.value = false
   } 
   if(error) {
     mismatch.value = true
+    checking.value = false
   }
 }
 
@@ -102,5 +109,6 @@ const reset = () => {
   NIS.value = ""
   tgl_lahir.value = ""
   mismatch.value = false
+  checking.value = false
 }
 </script>
