@@ -41,7 +41,7 @@
       </div>
       <div class="my-3 mt-2 px-2 text-center bg-white p-2 alert p-4">
         <div class="fs-6">
-          Berdasarkan Surat Keputusan Kepala SMK Negeri 4 Tasikmalaya Nomor
+          Berdasarkan Surat Keputusan Kepala SMK Negeri 4 Tasikmalaya 
           Nomor : 420/292.1/SMKN.4-Cabdin Wil. XII dan Keputusan hasil Rapat
           Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 3 Mei 2024,
           bahwa:
