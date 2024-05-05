@@ -8,9 +8,6 @@ export default defineNuxtConfig({
   ],
   modules: ["@nuxtjs/supabase"],
   supabase: { redirect: false },
-  plugins: [
-    { src: "~/plugins/aos", mode: 'client' }
-  ],
   app: {
     head: {
       script: [{
