@@ -4,9 +4,8 @@
       <div class="text-center fs-3 prototype mb-4">
         Tentang App.
       </div>
-      <div  class="text-center">
-        Website Pengumuman Kelulusan SMK Negeri 4 Tasikmalaya <br>
-        Website ini diperuntukkan untuk menampilkan informasi kelulusan Siswa/i SMK Negeri 4 Tasikmalaya.
+      <div  class="text-justify">
+        Website ini bertujuan untuk menampilkan informasi kelulusan peserta didik di SMK Negeri 4 Tasikmalaya.
         <div class="my-3 text-muted">Dibuat dengan <i class="bi bi-heart-fill"></i> oleh PPLG.</div>
       </div>
     </div>
