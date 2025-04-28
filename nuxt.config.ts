@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     "bootstrap-icons/font/bootstrap-icons.css",
     "~/assets/css/bs.sketchy.css"
   ],
-  modules: ["@nuxtjs/supabase"],
+  modules: ["@nuxtjs/supabase", "@nuxtjs/mdc"],
   supabase: { redirect: false },
   app: {
     head: {
