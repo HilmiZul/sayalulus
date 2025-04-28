@@ -116,22 +116,20 @@ const checking = ref(false)
 const isConfetti = ref(false)
 const isAgree = ref(false)
 const md_text_pernyataan = `
-Saya adalah merupakan Calon Lulusan SMK Negeri 4 Tasikmalaya Tahun Pelajaran 2024/2025, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
-1. Tidak akan melakukan euphoria yang berlebihan dan tindak negatif dalam merayakan kelulusan dari SMK Negeri 4 Tasikmalaya, seperti:
+Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran 2024/2025, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
+1. Tidak akan melakukan euphoria yang berlebihan dan tindak negatif dalam merayakan kelulusan dari SMKN 4 Tasikmalaya, seperti:
 
     a. Curat-coret pada pakaian seragam sekolah atau media/fasilitas lainnya;
 
     b. Konvoi/iring-iringan dengan kendaraan bermotor dan mengganggu ketertiban umum, atau;
 
-    c. Tindakan kriminal lainnya baik yang merugikan diri sendiri maupun orang lain.
+    c. Penyalahgunaan media sosial dan kriminal lainnya yang melanggar norma dan/atau aturan yang berlaku dimasyarakat sehingga merugikan diri sendiri maupun orang lain.
 
-2. Tidak akan mengadakan kegiatan/acara perpisahan baik pada lingkup kelas, program keahlian, sekolah, atau antar sekolah dalam bentuk apapun.
+2. Tidak akan mengadakan kegiatan/acara perpisahan baik pada lingkup kelas, program keahlian, sekolah atau antar sekolah dalam bentuk apapun.
 
-3. Tidak akan melakukan atau terlibat dalam tindakan yang melanggar norma dan/atau aturan yang berlaku di masyarakat.
+3. Pihak SMKN 4 Tasikmalaya secara institusi terlepas dari kewajiban dan tanggung jawab, apabila saya bermasalah secara hukum melanggar peraturan atau ketentuan dimasyarakat, serta perundang-udangan yang berlaku.
 
-4. Pihak SMK Negeri 4 Tasikmalaya secara institusi terlepas dari kewajiban dan tanggung jawab, apabila Saya bermasalah secara hukum melanggar peraturan atau ketentuan di masyarakat serta perundang-udangan yang berlaku.
-
-Demikian pernyataan ini dibuat dengan sesungguhnya dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun, serta Saya siap bertanggung jawab sepenuhnya menanggung segala konsekuensi yang terjadi akibat dari dibuatnya pernyataan ini.
+Demikian peryataan ini dibuat dengan sesungguhnya dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun, serta saya siap dan bertanggung jawab sepenuhnya menanggung segala konsekuensi yang terjadi akibat dari dibuatnya pertanyaan ini.
 `
 
 const onPeriksa = async () => {
