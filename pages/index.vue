@@ -80,7 +80,7 @@
         <div class="fs-6">
           Berdasarkan Surat Keputusan Kepala SMK Negeri 4 Tasikmalaya
           Nomor : -/-/SMKN.4-Cabdin Wil. XII dan Keputusan hasil Rapat
-          Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 2 Mei 2025,
+          Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 5 Mei 2025,
           bahwa:
         </div>
         <div class="text-center">
