@@ -67,7 +67,7 @@
     </div>
     <!-- periksa result.status apabila nol maka peserta belum menandatangai surat pernyataan dan belum dapat melihat hasil kelulusan  -->
     <div v-if="isResult && result.status == 0" class="alert alert-danger">
-      <i class="bi bi-exclamation-triangle"></i> Silahkan hubungi Walikelas untuk menandatangani Surat Pernyataan!
+      <i class="bi bi-exclamation-triangle"></i> Terjadi kesalahan! Silahkan hubungi Walikelas Anda!
       <div class="mt-3"><button class="btn btn-danger" @click="reset">kembali</button></div>
     </div>
     <div v-if="isResult && result.status == 1">
@@ -78,9 +78,9 @@
       </div>
       <div class="my-3 mt-2 px-2 text-center bg-white p-2 alert p-4">
         <div class="fs-6">
-          Berdasarkan Surat Keputusan Kepala SMK Negeri 4 Tasikmalaya
+          Berdasarkan Surat Keputusan Kepala SMKN 4 Tasikmalaya
           Nomor : -/-/SMKN.4-Cabdin Wil. XII dan Keputusan hasil Rapat
-          Kelulusan Dewan Guru SMK Negeri 4 Tasikmalaya tanggal 5 Mei 2025,
+          Kelulusan Dewan Guru SMKN 4 Tasikmalaya tanggal 5 Mei 2025,
           bahwa:
         </div>
         <div class="text-center">
@@ -90,7 +90,7 @@
           <div class="fs-6 mb-3 text-grey">{{ result.kompetensi}}</div>
           <span class="fs-6">dinyatakan <span @click="moreConfetti" class="keterangan"><em>"{{ result.keterangan }}"</em></span></span>
           <p class="fs-6">
-            Dari satuan Pendidikan SMK Negeri 4 Tasikmalaya Tahun Pelajaran
+            Dari satuan Pendidikan SMKN 4 Tasikmalaya Tahun Pelajaran
             {{ tahun-1 }}/{{ tahun }}.
           </p>
         </div>
