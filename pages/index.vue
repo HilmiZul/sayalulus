@@ -65,7 +65,14 @@
         </div>
       </div> -->
     </div>
-    <div v-if="isResult">
+    <!-- periksa result.status apabila nol maka peserta belum menandatangai surat pernyataan dan belum dapat melihat hasil kelulusan  -->
+    <div v-if="isResult && result.status == 0" class="alert alert-danger">
+      <i class="bi bi-exclamation-triangle"></i> Silahkan hubungi Walikelas untuk menandatangani Surat Pernyataan!
+      <div class="mt-3"><button class="btn btn-danger" @click="reset">kembali</button></div>
+    </div>
+    <div v-if="isResult && result.status == 1">
+      <!-- tampilkan hasil kelulusan apabila NIS dan password sesuai dan status bernilai 1.
+            nilai 1 mengartikan peserta didik telah menandatangani surat pernyataan. -->
       <div class="position-relative">
         <div v-confetti v-if="isConfetti" class="position-absolute top-0 start-50 translate-middle-x"></div>
       </div>
