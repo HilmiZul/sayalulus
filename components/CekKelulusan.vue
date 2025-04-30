@@ -54,8 +54,9 @@
       </div>
     </div>
     <!-- periksa result.status apabila nol maka peserta belum menandatangai surat pernyataan dan belum dapat melihat hasil kelulusan  -->
-    <div v-if="isResult && result.status == 0" class="alert alert-danger">
-      <i class="bi bi-exclamation-triangle"></i> Terjadi kesalahan! Silahkan hubungi Walikelas Anda!
+    <div v-if="isResult && result.status == 0" class="alert alert-danger my-5">
+      <h3><i class="bi bi-exclamation-triangle"></i> Terjadi kesalahan!</h3>
+      Silahkan hubungi pihak Sekolah!
       <div class="mt-3"><button class="btn btn-danger" @click="reset">kembali</button></div>
     </div>
     <div v-if="isResult && result.status == 1">
