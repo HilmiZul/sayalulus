@@ -3,10 +3,9 @@
     <div class="row">
       <div class="col-md-12">
         <nav class="navbar navbar-expand-lg navbar-light bg-light bg-shadow mt-4 border-0">
-          <a
+          <NuxtLink
             class="navbar-brand"
-            href="http://smkn4-tsm.sch.id"
-            target="_blank"
+            to="/"
           >
             <img
               src="https://upload.wikimedia.org/wikipedia/id/9/9e/Logo_SMK_Negeri_4_Tasikmalaya.png"
@@ -14,8 +13,10 @@
               class="logo"
               style="width: 1.2em"
             />
-            <span class="mx-3 prototype">SMKN 4 Tasikmalaya</span>
-          </a>
+            <span class="mx-3 prototype text-dark">
+              <span class="border border-dark p-1">Kelulusan.</span>
+            </span>
+          </NuxtLink>
           <button
             class="navbar-toggler border-0"
             type="button"
@@ -31,7 +32,7 @@
             <div class="navbar-nav">
               <router-link class="nav-link" to="/"><i class="bi bi-mortarboard-fill"></i> PENGUMUMAN</router-link>
               <router-link class="nav-link" to="/kontak"><i class="bi bi-person-lines-fill"></i> KONTAK</router-link>
-              <router-link class="nav-link" to="/tentang"><i class="bi bi-building"></i> TENTANG</router-link>
+              <!-- <router-link class="nav-link" to="/tentang"><i class="bi bi-building"></i> TENTANG</router-link> -->
             </div>
           </div>
         </nav>
