@@ -20,6 +20,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@nuxtjs/mdc": "^0.17.0"
+    "@nuxtjs/mdc": "^0.17.0",
+    "nuxt-countdown": "^1.2.0"
   }
 }
