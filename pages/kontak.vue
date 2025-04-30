@@ -5,7 +5,7 @@
         Kontak.
       </div>
       <div class="card bg-shadow p-4 border-0">
-        Jl. Depok, Kel. Sukamenak Kec. Purbaratu <br/>
+        Jl. Depok, Kel. Sukamenak, Kec. Purbaratu <br/>
         Kota Tasikmalaya 46196 <br />
         Jawa Barat, Indonesia <br />
         +62265312059 <br />
