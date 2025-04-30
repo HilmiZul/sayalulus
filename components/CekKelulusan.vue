@@ -2,13 +2,12 @@
   <div>
     <div v-if="!isResult">
       <div class="col-md-6 mx-auto mb-5">
-        <div class="text-center fs-3 prototype my-4" >
+        <div class="text-center fs-3 prototype mb-4" >
           Pengumuman Kelulusan
           <div class="fs-4">SMKN 4 Tasikmalaya</div>
           <div class="fs-5 quicksand text-dark">{{ tahun-1 }}/{{ tahun }}</div>
         </div>
-
-        <div class="card bg-shadow"  >
+        <div class="card bg-shadow border-0">
           <div v-if="checking" class="card-body text-center"><em>Sedang Memeriksa...</em></div>
           <div v-else class="card-body">
             <!-- <form @submit.prevent="onPeriksa"> -->
@@ -16,7 +15,7 @@
                 <input v-model="NIS" type="text" class="form-control form-control-lg" placeholder="NIS" autofocus required :disabled="checking" />
               </div>
               <div class="input-group my-3">
-                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="PASSWORD" required :disabled="checking" />
+                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="Password" required :disabled="checking" />
               </div>
               <div v-if="mismatch" class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> NIS dan Password tidak cocok!</div>
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
@@ -25,7 +24,7 @@
               <div class="modal fade" id="SuratPernyataan">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
-                    <div class="modal-header"><h3>Saya Menyatakan</h3></div>
+                    <div class="modal-header"><h3 class="quicksand">Saya Menyatakan</h3></div>
                     <div class="modal-body">
                       <MDC :value="md_text_pernyataan" tag="article" />
                       <hr/>
@@ -54,7 +53,7 @@
       </div>
     </div>
     <!-- periksa result.status apabila nol maka peserta belum menandatangai surat pernyataan dan belum dapat melihat hasil kelulusan  -->
-    <div v-if="isResult && result.status == 0" class="alert alert-danger my-5">
+    <div v-if="isResult && result.status == 0" class="alert alert-danger my-4 border-0 bg-shadow">
       <h3><i class="bi bi-exclamation-triangle"></i> Terjadi kesalahan!</h3>
       Silahkan hubungi pihak Sekolah!
       <div class="mt-3"><button class="btn btn-danger" @click="reset">kembali</button></div>
@@ -97,9 +96,9 @@ const client = useSupabaseClient();
 const mismatch = ref(false);
 const NIS = ref("");
 const tgl_lahir = ref("");
+const tahun = new Date().getFullYear()
 const result = ref([]);
 const isResult = ref(false);
-const tahun = new Date().getFullYear()
 const checking = ref(false)
 const isConfetti = ref(false)
 const isAgree = ref(false)

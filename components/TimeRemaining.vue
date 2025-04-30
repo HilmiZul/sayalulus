@@ -1,20 +1,22 @@
 <template>
   <div class="row">
-    <div class="col">
+    <div class="col-md-6 offset-md-3">
+      <div class="text-center fs-3 prototype mb-4">
+        Menuju Pengumuman
+      </div>
       <Countdown
         :date="DDay"
         v-slot="{ days, hours, minutes, seconds }"
         @end="onCountdownEnd"
         >
-        <div class="text-center my-5 py-3 card">
-          <div class="fs-2 pb-3">MENUJU PENGUMUMAN</div>
+        <div class="text-center my-3 py-3 card bg-shadow border-0">
           <div class="timer">
-            <span class="fredoka-one fs-1">{{ days }}</span> hari
-            <span class="fredoka-one fs-1">{{ hours }}</span> jam
-            <span class="fredoka-one fs-1">{{ minutes }}</span> menit
-            <span class="fredoka-one fs-1">{{ seconds }}</span> detik
+            <h1 class="fs-1">{{ days }}</h1> hari
+            <h1 class="fs-1">{{ hours }}</h1> jam
+            <h1 class="fs-1">{{ minutes }}</h1> menit
+            <h1 class="fs-1">{{ seconds }}</h1> detik
           </div>
-          <div class="quicksand small mt-3 text-muted">05 Mei 2025, 20:00 WIB.</div>
+          <div class="small mt-3 text-muted">05 Mei 2025, 20:00 WIB.</div>
         </div>
       </Countdown>
     </div>
@@ -24,7 +26,7 @@
 <script setup>
 const isCounting = ref(true)
 const emit = defineEmits(['end'])
-// const DDay = ref(new Date('April 30, 2025 11:07:00 GMT+07:00'))
+// const DDay = ref(new Date('April 30, 2025 21:27:00 GMT+07:00'))
 const DDay = ref(new Date('May 05, 2025 20:00:00 GMT+07:00'))
 const onCountdownEnd = () => {
   isCounting.value = false
@@ -33,7 +35,7 @@ const onCountdownEnd = () => {
 </script>
 
 <style scoped>
-.timer {
+.timer h1.fs-1 {
   display: inline
 }
 </style>

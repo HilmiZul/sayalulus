@@ -8,6 +8,7 @@
 <script setup>
 useHead({ title: "Info Kelulusan SMKN 4 Tasikmalaya" })
 const isCounting = ref(true)
+
 function handleEndCounting(newValue) {
   isCounting.value = newValue
 }

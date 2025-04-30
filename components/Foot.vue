@@ -1,16 +1,20 @@
 <template>
   <div class="row justify-content-center mt-5 mb-5">
     <div class="col-md-4">
-      <footer class="text-center small p-3 bg-shadow rounded-3 bg-light">
-        &copy; 2023. <a href="https://smpn3tsm.sch.id" class="link" target="_blank">SMPN 3 Tasikmalaya</a>. All rights reserved.
+      <footer class="card text-center small p-2 bg-shadow bg-light border-0">
+        &copy; 2023 - {{ tahun }}. Dibuat dengan ♥ oleh PPLG.
       </footer>
     </div>
   </div>
 </template>
 
+<script setup>
+const tahun = new Date().getFullYear();
+</script>
+
 <style scoped>
 footer {
-  color: rgb(116, 116, 116);
+  color: rgb(160, 160, 160);
 }
 footer .link {
   color: inherit;
