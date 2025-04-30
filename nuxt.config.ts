@@ -7,7 +7,11 @@ export default defineNuxtConfig({
     "bootstrap-icons/font/bootstrap-icons.css",
     "~/assets/css/bs.sketchy.css"
   ],
-  modules: ["@nuxtjs/supabase", "@nuxtjs/mdc"],
+  modules: [
+    "@nuxtjs/supabase",
+    "@nuxtjs/mdc",
+    "nuxt-countdown",
+  ],
   supabase: { redirect: false },
   app: {
     head: {
