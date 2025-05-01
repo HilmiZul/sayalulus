@@ -34,6 +34,13 @@
 definePageMeta({
   layout: 'auth-login'
 })
+
+useHead({
+  title: 'Login / Kelulusan',
+  meta: [
+    { name: 'description', content: 'Login ke halaman admin' }
+  ]
+})
 const client = useSupabaseClient()
 const errorStatus = ref(false)
 const email = ref('')
