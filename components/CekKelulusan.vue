@@ -17,7 +17,11 @@
               <div class="input-group my-3">
                 <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="Password" required :disabled="checking" />
               </div>
-              <div v-if="mismatch" class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> NIS dan Password tidak cocok!</div>
+              <div v-if="mismatch" class="alert alert-danger">
+                NIS / Password tidak cocok. <br>
+                Periksa dengan teliti. <br>
+                Atau hubungi pihak Sekolah.
+              </div>
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
                 KIRIM
               </button>
@@ -52,13 +56,7 @@
         </div>
       </div>
     </div>
-    <!-- periksa result.status apabila nol maka peserta belum menandatangai surat pernyataan dan belum dapat melihat hasil kelulusan  -->
-    <div v-if="isResult && result.status == 0" class="alert alert-danger my-4 border-0 bg-shadow">
-      <h3><i class="bi bi-exclamation-triangle"></i> Terjadi kesalahan!</h3>
-      Silahkan hubungi pihak Sekolah!
-      <div class="mt-3"><button class="btn btn-danger" @click="reset">kembali</button></div>
-    </div>
-    <div v-if="isResult && result.status == 1">
+    <div v-if="isResult">
       <!-- tampilkan hasil kelulusan apabila NIS dan password sesuai dan status bernilai 1.
             nilai 1 mengartikan peserta didik telah menandatangani surat pernyataan. -->
       <div class="position-relative">
@@ -125,6 +123,7 @@ const onPeriksa = async () => {
   const { data, error } = await client
     .from("kelulusan2024")
     .select('*')
+    .eq("status", 1)
     .match({ nis: NIS.value, password: tgl_lahir.value })
     .single()
   if (data) {
