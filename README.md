@@ -4,22 +4,19 @@
 - Setujui Pernyataan sebelum memeriksa hasil kelulusan
 - Remove: Catatan Peringatan dan Screenshot bukti untuk SKL
 - Render Markdown using [@nuxtjs/mdc ↗️](https://nuxt.com/modules/mdc)
-- Ubah status TTD pernyataan siswa
-- Filter siswa berdasarkan kompetensi/program keahlian
-- Pengaturan: Nomor SK dan tanggal penetapan/keputusan
+- Countdown
+- Admin Page:
+  - Info statistik
+  - Ubah status TTD pernyataan siswa
+  - Filter siswa berdasarkan program keahlian
+  - Pengaturan: Nomor SK dan tanggal penetapan/keputusan
 - Bug fixes & Improvement
 
 ## 2024
 - Confetti
 - Improvement
 
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
 ## Setup
-
-Make sure to install the dependencies:
 
 ```bash
 # npm
@@ -63,4 +60,3 @@ npm run preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
