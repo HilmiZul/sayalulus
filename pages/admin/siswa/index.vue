@@ -47,13 +47,13 @@
                           NIS: {{ student.nis }} <br>
                           Password: {{ student.password }} <br>
                           Keterangan: {{ student.keterangan }} <br>
-                          TTD. Pernyataan: {{ student.status == 1 ? '✅ Sudah' : '❌ Belum' }}
+                          TTD. Pernyataan: {{ student.status == 1 ? '✅ Sudah Tandatangan' : '❌ Belum Tandatangan' }}
                           <hr />
                           <div class="alert alert-info small"><i class="bi bi-info-circle-fill"></i> Tutup jika tidak ada pembaharuan Status TTD pernyataan.</div>
                           <select v-model="newStatusTTD" class="form-control form-control-sm form-select my-2" required>
                             <option disable value="">&#8212;Ubah Status&#8212;</option>
-                            <option value="1">✅ Sudah</option>
-                            <option value="0">❌ Belum</option>
+                            <option value="1">✅ Sudah tandatangan</option>
+                            <option value="0">❌ Belum tandatangan</option>
                           </select>
                         </div>
                         <div class="modal-footer">
