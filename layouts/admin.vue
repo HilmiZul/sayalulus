@@ -16,6 +16,11 @@
                   Siswa <span class="float-end"><i class="bi bi-chevron-right"></i></span>
                 </li>
               </nuxt-link>
+              <nuxt-link to="/admin/pengaturan" class="list-link border-bottom border-1">
+                <li class="list-group-item">
+                  Pengaturan <span class="float-end"><i class="bi bi-chevron-right"></i></span>
+                </li>
+              </nuxt-link>
               <nuxt-link to="/" class="list-link border-bottom border-1">
                 <li class="list-group-item">
                   Ke Pengumuman <span class="float-end"><i class="bi bi-arrow-up-right-square"></i></span>
@@ -42,10 +47,6 @@
     <Foot />
   </div>
 </template>
-
-<script setup>
-const route = useRoute()
-</script>
 
 <style>
 .list-link {
