@@ -4,7 +4,10 @@
 - Setujui Pernyataan sebelum memeriksa hasil kelulusan
 - Remove: Catatan Peringatan dan Screenshot bukti untuk SKL
 - Render Markdown using [@nuxtjs/mdc ↗️](https://nuxt.com/modules/mdc)
-- Improvement
+- Ubah status TTD pernyataan siswa
+- Filter siswa berdasarkan kompetensi/program keahlian
+- Pengaturan: Nomor SK dan tanggal penetapan/keputusan
+- Bug fixes & Improvement
 
 ## 2024
 - Confetti
