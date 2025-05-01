@@ -17,9 +17,8 @@
               <div class="input-group my-3">
                 <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="Password" required :disabled="checking" />
               </div>
-              <div v-if="mismatch" class="alert alert-danger">
-                NIS / Password tidak cocok. <br>
-                Periksa dengan teliti. <br>
+              <div v-if="mismatch" class="alert alert-danger small">
+                Periksa dengan teliti NIS/Password. <br>
                 Atau hubungi pihak Sekolah.
               </div>
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
@@ -65,8 +64,8 @@
       <div class="my-3 mt-2 px-2 text-center bg-white p-2 alert p-4">
         <div class="fs-6">
           Berdasarkan Surat Keputusan Kepala SMKN 4 Tasikmalaya
-          Nomor : -/-/SMKN.4-Cabdin Wil. XII dan Keputusan hasil Rapat
-          Kelulusan Dewan Guru SMKN 4 Tasikmalaya tanggal 5 Mei 2025,
+          Nomor : {{ setting.nomor_surat }} dan Keputusan hasil Rapat
+          Kelulusan Dewan Guru SMKN 4 Tasikmalaya tanggal {{ setting.tgl_penetapan }}.,
           bahwa:
         </div>
         <div class="text-center">
@@ -100,6 +99,11 @@ const isResult = ref(false);
 const checking = ref(false)
 const isConfetti = ref(false)
 const isAgree = ref(false)
+const setting = ref([])
+const bulan = ref([
+  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+])
 const md_text_pernyataan = `
 Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran 2024/2025, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
 1. Tidak akan melakukan euphoria yang berlebihan dan tindak negatif dalam merayakan kelulusan dari SMKN 4 Tasikmalaya, seperti:
@@ -127,6 +131,7 @@ const onPeriksa = async () => {
     .match({ nis: NIS.value, password: tgl_lahir.value })
     .single()
   if (data) {
+    await getSetting()
     result.value = data
     isResult.value = true
     checking.value = false
@@ -154,5 +159,23 @@ const moreConfetti = async () => {
   isConfetti.value = false
   await Promise.resolve()
   isConfetti.value = true
+}
+
+const getSetting = async () => {
+  const { data, error } = await client
+    .from('kelulusan_setting')
+    .select('*')
+    .eq('id', 1)
+    .single()
+  if (data) {
+    setting.value = data
+    const date = new Date(data.tgl_penetapan)
+    const dd = date.getDate()
+    const mm = date.getMonth()
+    const yyyy = date.getFullYear()
+    setting.value.tgl_penetapan = `${dd} ${bulan.value[mm]} ${yyyy}`
+  } else {
+    console.error('Error fetching setting:', error)
+  }
 }
 </script>
