@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 class="my-3">Met dateng kembali, Pak!</h1>
+      <h1 class="mt-3">Kelulusan / Site Administration</h1>
+      <h6 class="mb-3">SMKN 4 Tasikmalaya</h6>
       <div class="col-md-3">
         <div class="card bg-shadow border-0 mb-4">
           <div class="card-body">

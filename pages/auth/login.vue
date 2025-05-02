@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-4 offset-md-4 mt-5">
-    <h2 class="text-center prototype">Pengumuman<span class="border-1 border-bottom border-left border-top border-dark">Kelulusan</span></h2>
-    <div class="text-center mb-3 prototype">SMKN 4 Tasikmalaya</div>
+    <h2 class="text-center">Pengumuman<span class="border-1 border-bottom border-left border-top border-dark">Kelulusan</span></h2>
+    <h6 class="text-center mb-3">SMKN 4 Tasikmalaya</h6>
     <div class="card">
       <div class="card-header">
         <h4>Login dulu gak sih!</h4>
