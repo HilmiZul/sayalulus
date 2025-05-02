@@ -18,8 +18,11 @@
                 <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="Password" required :disabled="checking" />
               </div>
               <div v-if="mismatch" class="alert alert-danger small">
-                Periksa dengan teliti NIS/Password. <br>
-                Atau hubungi pihak Sekolah.
+                <ul>
+                  <li>Periksa dengan teliti NIS/Password. </li>
+                  <li>Jika data Anda tidak ditemukan, silahkan temui pihak Sekolah pada hari dan jam kerja.</li>
+                </ul>
+
               </div>
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
                 KIRIM
@@ -65,7 +68,7 @@
         <div class="fs-6">
           Berdasarkan Surat Keputusan Kepala SMKN 4 Tasikmalaya
           Nomor : {{ setting.nomor_surat }} dan Keputusan hasil Rapat
-          Kelulusan Dewan Guru SMKN 4 Tasikmalaya tanggal {{ setting.tgl_penetapan }}.,
+          Kelulusan Dewan Guru SMKN 4 Tasikmalaya tanggal {{ setting.tgl_penetapan }},
           bahwa:
         </div>
         <div class="text-center">
