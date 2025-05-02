@@ -5,7 +5,7 @@
         <h3><i class="bi bi-people"></i> Siswa</h3>
       </div>
       <div class="card-body">
-        <div v-if="students.length < 1" class="text-center text-muted my-3">
+        <div v-if="students.length < 1" class="text-muted my-3">
           <span class="spinner-border spinner-border-sm me-1"></span>
           Sedang memuat
         </div>
@@ -14,11 +14,11 @@
             Filter by:
             <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
               <button @click="getStudents" type="button" class="btn btn-light">All.</button>
-              <button @click="filterBy('Teknik dan Bisnis Sepeda Motor')" type="button" class="btn btn-light">TSM</button>
+              <button @click="filterBy('Teknik Sepeda Motor')" type="button" class="btn btn-light">TO</button>
               <button @click="filterBy('Rekayasa Perangkat Lunak')" type="button" class="btn btn-light">PPLG</button>
               <button @click="filterBy('Teknik Komputer dan Jaringan')" type="button" class="btn btn-light">TJKT</button>
               <button @click="filterBy('Desain Komunikasi Visual')" type="button" class="btn btn-light">DKV</button>
-              <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TOI</button>
+              <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TE</button>
             </div>
             <div class="my-2 "><i class="bi bi-people"></i> {{ students.length }}</div>
           </div>
@@ -101,7 +101,7 @@ const msgSuccessUpdateStatus = ref(false)
 
 async function getStudents() {
   const { data, error } = await client
-    .from('kelulusan2024')
+    .from('kelulusan_siswa')
     .select('*')
     .order('status, id', { ascending: true })
   if (data) students.value = data
@@ -110,7 +110,7 @@ async function getStudents() {
 
 async function filterBy(kompetensi) {
   const { data, error } = await client
-    .from('kelulusan2024')
+    .from('kelulusan_siswa')
     .select('*')
     .eq('kompetensi', kompetensi)
     .order('status', { ascending: true })
@@ -125,7 +125,7 @@ function setStudentID(id) {
 
 async function updateStatusTTD() {
   const { data, error } = await client
-    .from('kelulusan2024')
+    .from('kelulusan_siswa')
     .update({ status: newStatusTTD.value })
     .eq('id', studentID.value)
     .select()
