@@ -128,7 +128,7 @@ const onPeriksa = async () => {
   mismatch.value = false
   checking.value = true
   const { data, error } = await client
-    .from("kelulusan2024")
+    .from("kelulusan_siswa")
     .select('*')
     .eq("status", 1)
     .match({ nis: NIS.value, password: tgl_lahir.value })

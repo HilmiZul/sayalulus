@@ -47,7 +47,7 @@
           <div class="col mb-3">
             <div class="card p-2 bg-danger text-white">
               <h3>{{ tsm }}</h3>
-              TSM
+              TO
             </div>
           </div>
           <div class="col">
@@ -71,7 +71,7 @@
           <div class="col">
             <div class="card p-2 bg-secondary text-white">
               <h3>{{ toi }}</h3>
-              TOI
+              TE
             </div>
           </div>
         </div>
@@ -106,48 +106,48 @@ const statusTTD = ref(0)
 
 async function getStatusTTD() {
   const { data, error } = await client
-    .from('kelulusan2024')
+    .from('kelulusan_siswa')
     .select('*')
     .eq('status', 0)
   if(data) statusTTD.value = data
 }
 
 async function getStudents() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
   if (error) console.error(error)
   else students.value = data.length
 }
 
 async function getPPLG() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
     .eq('kompetensi', 'Rekayasa Perangkat Lunak')
   if (error) console.error(error)
   else pplg.value = data.length
 }
 
 async function getTJKT() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
     .eq('kompetensi', 'Teknik Komputer dan Jaringan')
   if (error) console.error(error)
   else tjkt.value = data.length
 }
 
 async function getTSM() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
-    .eq('kompetensi', 'Teknik dan Bisnis Sepeda Motor')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
+    .eq('kompetensi', 'Teknik Sepeda Motor')
   if (error) console.error(error)
   else tsm.value = data.length
 }
 
 async function getDKV() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
     .eq('kompetensi', 'Desain Komunikasi Visual')
   if (error) console.error(error)
   else dkv.value = data.length
 }
 
 async function getTOI() {
-  const { data, error } = await client.from('kelulusan2024').select('*')
+  const { data, error } = await client.from('kelulusan_siswa').select('*')
     .eq('kompetensi', 'Teknik Otomasi Industri')
   if (error) console.error(error)
   else toi.value = data.length
