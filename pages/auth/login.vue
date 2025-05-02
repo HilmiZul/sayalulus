@@ -42,10 +42,15 @@ useHead({
   ]
 })
 const client = useSupabaseClient()
+const user = useSupabaseUser()
 const errorStatus = ref(false)
 const email = ref('')
 const password = ref('')
 const isLoading = ref(false)
+
+if (user.value) {
+  navigateTo('/admin')
+}
 
 async function handleLogin() {
   errorStatus.value = false
