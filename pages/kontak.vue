@@ -4,7 +4,7 @@
       <div class="text-center fs-3 prototype mb-4">
         Kontak.
       </div>
-      <div class="card bg-shadow p-4 border-0">
+      <div class="card bg-shadow p-4 border-0 small">
         Jl. Depok, Kel. Sukamenak, Kec. Purbaratu <br/>
         Kota Tasikmalaya 46196 <br />
         Jawa Barat, Indonesia <br />
