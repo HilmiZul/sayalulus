@@ -30,10 +30,6 @@ const client = useSupabaseClient()
 const isCounting = ref(true)
 const emit = defineEmits(['end'])
 const DDay = ref(0)
-const month = [
-  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-]
 const tglString = ref('')
 const isLoading = ref(true)
 const onCountdownEnd = () => {
@@ -49,14 +45,22 @@ async function getDDay() {
     .eq('id', 1)
     .single()
   if(data) {
-    const tgl = new Date(data.tgl_pengumuman)
     const waktu = data.waktu_pengumuman
-    tglString.value = `${tgl.getDate()} ${month[tgl.getMonth()]} ${tgl.getFullYear()}, ${waktu} WIB`
-    DDay.value = new Date(data.tgl_pengumuman + ' ' + waktu + ' GMT+0700')
+    tglString.value = formatDate(data, 'id-ID') + ', ' + waktu + ' WIB'
+    DDay.value = new Date(formatDate(data, 'en-US') + ' ' + waktu + ' GMT+0700')
     isLoading.value = false
   } else {
     console.error(error)
   }
+}
+
+function formatDate(data, country) {
+  return new Date(data.tgl_pengumuman).toLocaleDateString(country, {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+    timeZone: 'Asia/Jakarta'
+  })
 }
 
 onMounted(() => {
