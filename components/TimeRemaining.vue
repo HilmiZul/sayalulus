@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="text-center fs-3 prototype mb-4">
-        Menuju Pengumuman
+        Menuju Pengumuman.
       </div>
+      <div v-if="isLoading" class="card text-center my-3 py-3 bg-shadow border-0"><i class="bi bi-hourglass-split"></i> Sedang memuat</div>
       <Countdown
+        v-else
         :date="DDay"
         v-slot="{ days, hours, minutes, seconds }"
         @end="onCountdownEnd"
@@ -16,7 +18,7 @@
             <h1 class="fs-1">{{ minutes }}</h1> menit
             <h1 class="fs-1">{{ seconds }}</h1> detik
           </div>
-          <div class="small mt-3 text-muted">05 Mei 2025, 20:00 WIB.</div>
+          <div class="small mt-3 text-muted">{{ tglString }}</div>
         </div>
       </Countdown>
     </div>
@@ -24,14 +26,42 @@
 </template>
 
 <script setup>
+const client = useSupabaseClient()
 const isCounting = ref(true)
 const emit = defineEmits(['end'])
-// const DDay = ref(new Date('April 30, 2025 21:27:00 GMT+07:00'))
-const DDay = ref(new Date('May 05, 2025 20:00:00 GMT+07:00'))
+const DDay = ref(0)
+const month = [
+  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+]
+const tglString = ref('')
+const isLoading = ref(true)
 const onCountdownEnd = () => {
   isCounting.value = false
   emit('end', isCounting.value)
 }
+
+async function getDDay() {
+  isLoading.value = true
+  const { data, error } = await client
+    .from('kelulusan_setting')
+    .select('tgl_pengumuman, waktu_pengumuman')
+    .eq('id', 1)
+    .single()
+  if(data) {
+    const tgl = new Date(data.tgl_pengumuman)
+    const waktu = data.waktu_pengumuman
+    tglString.value = `${tgl.getDate()} ${month[tgl.getMonth()]} ${tgl.getFullYear()}, ${waktu} WIB`
+    DDay.value = new Date(data.tgl_pengumuman + ' ' + waktu + ' GMT+0700')
+    isLoading.value = false
+  } else {
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  getDDay()
+})
 </script>
 
 <style scoped>

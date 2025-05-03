@@ -11,7 +11,9 @@
             Sedang memuat
           </div>
           <form v-else @submit.prevent="updateSetting">
-            <div v-if="statusSuccessUpdate" class="alert alert-success">Pengaturan berhasil diperbaharui.</div>
+            <div v-if="statusSuccessUpdate" class="alert alert-success alert-dismissible">
+              <button @click="() => statusSuccessUpdate = false" class="btn-close small"></button>
+              Pengaturan berhasil diperbaharui.</div>
             <div class="mb-3">
               <label for="nomor">Nomor SK</label>
               <input v-model="setting.nomor_surat" id="nomor" type="text" class="form-control" placeholder="-/-/SMKN.4-Cabdin Wil.XII" required />
@@ -19,6 +21,15 @@
             <div class="mb-3">
               <label for="tgl_penetapan">Tanggal Penetapan</label>
               <input v-model="setting.tgl_penetapan" id="tgl_penetapan" type="date" class="form-control" placeholder="Tanggal penetapan" required />
+            </div>
+            <hr class="my-4 border-dark" />
+            <div class="mb-3">
+              <label for="tgl_pengumuman">Tanggal Pengumuman</label>
+              <input v-model="setting.tgl_pengumuman" id="tgl_pengumuman" type="date" class="form-control" placeholder="Tanggal pengumuman" required />
+            </div>
+            <div class="mb-3">
+              <label for="waktu_pengumuman">Waktu Pengumuman</label>
+              <input v-model="setting.waktu_pengumuman" id="waktu_pengumuman" type="time" class="form-control" placeholder="Waktu pengumuman" required />
             </div>
             <button class="btn btn-dark" :disabled="isSaving">
               <span v-if="isSaving">Sedang menyimpan</span>
@@ -73,6 +84,8 @@ async function updateSetting() {
     .update({
       nomor_surat: setting.value.nomor_surat,
       tgl_penetapan: setting.value.tgl_penetapan,
+      tgl_pengumuman: setting.value.tgl_pengumuman,
+      waktu_pengumuman: setting.value.waktu_pengumuman,
     })
     .eq('id', 1)
     .select()
