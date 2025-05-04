@@ -6,7 +6,8 @@
 
 <script setup>
 definePageMeta({
-  layout: 'auth-login'
+  layout: 'auth-login',
+  middleware: 'auth',
 })
 const client = useSupabaseClient()
 
