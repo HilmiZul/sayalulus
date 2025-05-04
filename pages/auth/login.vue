@@ -2,9 +2,9 @@
   <div class="col-md-4 offset-md-4 mt-5">
     <h2 class="text-center">Pengumuman<span class="border-1 border-bottom border-left border-top border-dark">Kelulusan</span></h2>
     <h6 class="text-center mb-3">SMKN 4 Tasikmalaya</h6>
-    <div class="card">
-      <div class="card-header">
-        <h4>Login dulu gak sih!</h4>
+    <div class="card border-0 bg-shadow">
+      <div class="card-header bg-transparent">
+        <h6 class="m-0">Login dulu gak sih!</h6>
       </div>
       <div class="card-body">
         <form @submit.prevent="handleLogin">
@@ -17,15 +17,15 @@
           <div class="mb-3">
             <input v-model="password" type="password" class="form-control" placeholder="katasandi" required>
           </div>
-          <button class="btn btn-dark" :disabled="isLoading">
+          <button class="btn btn-dark btn-sm" :disabled="isLoading">
             <span v-if="isLoading">bentar...</span>
             <span v-else>Gass!</span>
           </button>
         </form>
       </div>
     </div>
-    <div class="my-3">
-      <nuxt-link to="/"><i class="bi bi-arrow-left"></i> ke halaman pengumuman</nuxt-link>
+    <div class="my-3 small">
+      <nuxt-link to="/" class="text-muted"><i class="bi bi-arrow-left"></i> ke halaman pengumuman</nuxt-link>
     </div>
   </div>
 </template>
