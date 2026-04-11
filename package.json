@@ -2,8 +2,6 @@
   "name": "kelulusan-smkn4",
   "version": "2.1",
   "author": "Zul Hilmi",
-  "private": true,
-  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
