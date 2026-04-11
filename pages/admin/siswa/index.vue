@@ -2,42 +2,98 @@
   <div>
     <div class="card bg-shadow border-0">
       <div class="card-header">
+        <span class="float-end">
+          <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#update-record"><i class="bi bi-upload"></i> Update</button>
+        </span>
         <h3><i class="bi bi-people"></i> Siswa</h3>
+
+        <div class="modal" id="update-record">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                Update Dengan Yang Baru
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body small">
+                <div class="alert alert-info">
+                  <ul class="m-0 px-3">
+                    <li>Update ini akan menimpa yang lama</li>
+                    <li>Isi data kelulusan dengan format <nuxt-link to="https://docs.google.com/spreadsheets/d/1NEi2EOG5UXJtqd7x6PWKYiYKGcw2b7hGcRYZpr1F6Ac/edit?usp=sharing" target="_blank">disini</nuxt-link></li>
+                    <li>Download sebagai file <code>.csv</code></li>
+                    <li>Upload file tersebut pada form dibaah</li>
+                    <li>Tunggu hingga proses update berhasil tersimpan!</li>
+                  </ul>
+                </div>
+
+                <div class="mb-3">
+                  <label for="file">Pilih file <code>.csv</code></label>
+                  <input @change="getFile" id="file" type="file" accept=".csv" class="form form-control-file">
+                </div>
+                
+                <div v-if="isLoading" class="mb-3 text-muted fs-italic">
+                  <div class="strong">Bentar, sedang menyimpan...</div>
+                </div>
+                <div v-if="isError" class="mb-3 text-muted">
+                  <div class="strong">Error: Periksa kembali berkas.</div>
+                </div>
+                <div v-if="isUploadSuccess" class="mb-3 text-dark fw-bold">
+                  <div class="strong">Berhasil tersimpan!</div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-dark btn-sm" data-bs-dismiss="modal">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-body">
-        <div v-if="students.length < 1" class="text-muted my-3">
+        <div v-if="countNotPassed > 0" class="alert alert-warning">
+          Ada {{ countNotPassed }} Siswa tidak lulus!
+        </div>
+
+        <div v-if="isLoading" class="text-muted my-3">
           <span class="spinner-border spinner-border-sm me-1"></span>
           Sedang memuat
         </div>
+
         <div v-else class="table-responsive">
           <div class="mb-3 quicksand small">
             Filter by:
             <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
-              <button @click="getStudents" type="button" class="btn btn-light">All.</button>
-              <button @click="filterBy('Teknik Sepeda Motor')" type="button" class="btn btn-light">TO</button>
-              <button @click="filterBy('Rekayasa Perangkat Lunak')" type="button" class="btn btn-light">PPLG</button>
-              <button @click="filterBy('Teknik Komputer dan Jaringan')" type="button" class="btn btn-light">TJKT</button>
+              <button @click="filterBy('')" type="button" class="btn btn-light">All.</button>
+              <button @click="filterBy('Teknik Sepeda Motor')" type="button" class="btn btn-light">TSM</button>
+              <button @click="filterBy('Rekayasa Perangkat Lunak')" type="button" class="btn btn-light">RPL</button>
+              <button @click="filterBy('Teknik Komputer dan Jaringan')" type="button" class="btn btn-light">TKJ</button>
               <button @click="filterBy('Desain Komunikasi Visual')" type="button" class="btn btn-light">DKV</button>
-              <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TE</button>
+              <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TOI</button>
             </div>
             <div class="my-2 "><i class="bi bi-people"></i> {{ students.length }}</div>
           </div>
+
           <table class="table table-hover small quicksand">
             <thead>
               <tr>
                 <th width="5%">#</th>
                 <th>Nama</th>
                 <th>Kelas</th>
+                <th>Keterangan</th>
                 <th>TTD Pernyataan</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr v-for="(student, i) in students" :key="i" class="p-0">
+              <tr v-if="isEmptyRecord">
+                <td colspan="5" class="text-center text-muted">Tidak tersedia</td>
+              </tr>
+              
+              <tr v-else v-for="(student, i) in students" :key="i" class="p-0">
                 <td>{{ i+1 }}.</td>
                 <td>
                   <a title="Change status TTD" data-bs-toggle="modal" :data-bs-target="`#changeStatus-${student.id}`" @click="setStudentID(student.id)" href="#" class="border-1 border-bottom border-dark pb-1 text-decoration-none">
                     {{ student.nama }}
                   </a>
+
                   <div class="modal fade" :id="`changeStatus-${student.id}`">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -63,16 +119,20 @@
                       </div>
                     </div>
                   </div>
+
                 </td>
                 <td>{{ student.kelas }}</td>
+                <td>{{ student.keterangan }}</td>
                 <td>
                   <span v-if="student.status == 1" class="badge bg-success">sudah</span>
                   <span v-else class="badge bg-danger">belum</span>
                 </td>
               </tr>
             </tbody>
+
           </table>
         </div>
+
       </div>
     </div>
   </div>
@@ -98,24 +158,59 @@ const students = ref([])
 const newStatusTTD = ref('')
 const studentID = ref('')
 const msgSuccessUpdateStatus = ref(false)
+const countNotPassed = ref(0)
+const isLoading = ref(false)
+const isError = ref(false)
+const isUploadSuccess = ref(false)
+const isEmptyRecord = ref(false)
 
 async function getStudents() {
+  isLoading.value = true
   const { data, error } = await client
     .from('kelulusan_siswa')
     .select('*')
-    .order('status, id', { ascending: true })
-  if (data) students.value = data
+    .order('status, id, keterangan', { ascending: true })
+  if (data) {
+    students.value = data
+    students.value.forEach(item => {
+      if(item.keterangan == "TIDAK LULUS") countNotPassed.value++ 
+    });
+    isLoading.value = false
+    if(students.value.length < 1) {
+      isEmptyRecord.value = true
+    }
+  }
   else console.error(error)
 }
 
 async function filterBy(kompetensi) {
-  const { data, error } = await client
-    .from('kelulusan_siswa')
-    .select('*')
-    .eq('kompetensi', kompetensi)
-    .order('status', { ascending: true })
-  if(data) students.value = data
-  else console.error(error)
+  isEmptyRecord.value = false
+  if(kompetensi) {
+    const { data, error } = await client
+      .from('kelulusan_siswa')
+      .select('*')
+      .eq('kompetensi', kompetensi)
+      .order('status', { ascending: true })
+    if(data) {
+      students.value = data
+      if(students.value.length < 1) {
+        isEmptyRecord.value = true
+      }
+    }
+    else console.error(error)
+  } else {
+    const { data, error } = await client
+      .from('kelulusan_siswa')
+      .select('*')
+      .order('status', { ascending: true })
+    if(data) {
+      students.value = data
+      if(students.value.length < 1) {
+        isEmptyRecord.value = true
+      }
+    }
+    else console.error(error)
+  }
 }
 
 function setStudentID(id) {
@@ -135,6 +230,57 @@ async function updateStatusTTD() {
     await getStudents()
   } else {
     console.error(error)
+  }
+}
+
+async function getFile(e) {
+  isLoading.value = true
+  isError.value = false
+  isUploadSuccess.value = false
+
+  let file = e.target.files.item(0)
+  let csv = await file.text()
+  let normalisasi = csv.replace(/\r\n?/g, '\n')
+  const lines = normalisasi.trim().split('\n')
+  const result = [];
+  const headers = lines[0].split(',');
+
+  for (let i = 1; i < lines.length; i++) {
+    const obj = {};
+    const currentline = lines[i].split(',');
+
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentline[j];
+    }
+    // client.autoCancellation(false)
+    // let data = await client
+    //   .collection('iduka')
+    //   .create(obj)
+    result.push(obj);
+  }
+  
+  let { error } = await client.from('kelulusan_siswa').delete().neq('id', -999)
+  if(!error) {
+    let { error } = await client.from('kelulusan_siswa').insert(result)
+    if(!error) {
+      students.value = []
+      result.forEach(item => {
+        students.value.push(item)
+      })
+      isLoading.value = false
+      isError.value = false
+      isUploadSuccess.value = true
+    } else {
+      isError.value = true
+      isLoading.value = false
+      isUploadSuccess.value = false
+      console.error(error)
+    }
+  }
+  else {
+    isUploadSuccess.value = true
+    isLoading.value = false
+    isError.value = false
   }
 }
 
