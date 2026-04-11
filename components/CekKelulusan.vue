@@ -34,7 +34,7 @@
                   <div class="modal-content">
                     <div class="modal-header"><h3 class="quicksand">Saya Menyatakan</h3></div>
                     <div class="modal-body">
-                      <MDC :value="md_text_pernyataan" tag="article" />
+                      <MDC v-if="md_text_pernyataan_siswa" :value="md_text_pernyataan_siswa" tag="article" />
                       <hr/>
                       <div class="my-2">
                         <label for="ceklisPernyataan" class="ms-2 me-2">
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="my-3 pt-2 m-2 text-center">
-        <button class="btn btn-danger" @click="reset">kembali</button>
+        <button class="btn btn-dark" @click="reset">kembali</button>
       </div>
     </div>
   </div>
@@ -126,6 +126,7 @@ Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran ${tahun-1
 
 Demikian peryataan ini dibuat dengan sesungguhnya dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun, serta saya siap dan bertanggung jawab sepenuhnya menanggung segala konsekuensi yang terjadi akibat dari dibuatnya pertanyaan ini.
 `
+const md_text_pernyataan_siswa = ref()
 
 const onPeriksa = async () => {
   // ambil waktu dari server dunia berdasarkan zona wilayah.
@@ -205,8 +206,13 @@ const getSetting = async () => {
     const mm = date.getMonth()
     const yyyy = date.getFullYear()
     setting.value.tgl_penetapan = `${dd} ${bulan.value[mm]} ${yyyy}`
+    md_text_pernyataan_siswa.value = data.pernyataan_siswa
   } else {
     console.error('Error fetching setting:', error)
   }
 }
+
+onMounted(() => {
+  getSetting()
+})
 </script>
