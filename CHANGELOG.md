@@ -3,6 +3,11 @@
 - Create feat. update and replace current record
 - Display percentage kelulusan
 - Add world time API server to handle manipulate client time
+- Update Pengaturan's page: add some field and nav tab stye
+  - General: School name and address
+  - Pernyataan siswa
+- Load pernyataan siswa and kontak page from setting
+- Load school name (title) from setting
 
 ### 3 Mei 2025
 - Dynamic countdown
