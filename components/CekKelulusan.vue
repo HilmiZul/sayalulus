@@ -111,7 +111,7 @@ const bulan = ref([
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 ])
 const md_text_pernyataan = `
-Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran 2024/2025, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
+Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran ${tahun-1}/${tahun}, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
 1. Tidak akan melakukan euphoria yang berlebihan dan tindak negatif dalam merayakan kelulusan dari SMKN 4 Tasikmalaya, seperti:
 
     a. Curat-coret pada pakaian seragam sekolah atau media/fasilitas lainnya;
