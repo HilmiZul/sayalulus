@@ -1,5 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "kelulusan-smkn4",
+  "version": "2.1",
+  "author": "Zul Hilmi",
   "private": true,
   "type": "module",
   "scripts": {
