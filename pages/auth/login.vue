@@ -1,7 +1,13 @@
 <template>
   <div class="col-md-4 offset-md-4 mt-5">
     <h2 class="text-center">Pengumuman<span class="border-1 border-bottom border-left border-top border-dark">Kelulusan</span></h2>
-    <h6 class="text-center mb-3">SMKN 4 Tasikmalaya</h6>
+    <h6 class="text-center mb-3">
+      <span v-if="isLoadingSetting">
+        <span class="spinner-border spinner-border-sm me-1"></span>
+        Sedang memuat
+      </span>
+      <span v-else>{{ setting?.nama_sekolah }}</span>
+    </h6>
     <div class="card border-0 bg-shadow">
       <div class="card-header bg-transparent">
         <h6 class="m-0">Login dulu gak sih!</h6>
@@ -47,6 +53,8 @@ const errorStatus = ref(false)
 const email = ref('')
 const password = ref('')
 const isLoading = ref(false)
+const isLoadingSetting = ref(true)
+const setting = ref()
 
 if (user.value) {
   navigateTo('/admin')
@@ -69,6 +77,19 @@ async function handleLogin() {
     password.value = ''
   }
 }
+
+async function getSetting() {
+  isLoadingSetting.value = true
+  let { data, error } = await client.from('kelulusan_setting').select().eq('id', 1).single()
+  if(data) {
+    setting.value = data
+    isLoadingSetting.value = false
+  }
+}
+
+onMounted(() => {
+  getSetting()
+})
 </script>
 
 <style scoped>
