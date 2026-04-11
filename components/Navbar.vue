@@ -30,8 +30,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <router-link class="nav-link" to="/"><i class="bi bi-mortarboard-fill"></i> Pengumuman</router-link>
-              <router-link class="nav-link" to="/kontak"><i class="bi bi-person-lines-fill"></i> Kontak</router-link>
+              <nuxt-link class="nav-link" to="/"><i class="bi bi-mortarboard-fill"></i> Pengumuman</nuxt-link>
+              <nuxt-link class="nav-link" to="/kontak"><i class="bi bi-person-lines-fill"></i> Kontak</nuxt-link>
               <!-- <router-link class="nav-link" to="/tentang"><i class="bi bi-building"></i> TENTANG</router-link> -->
             </div>
           </div>
