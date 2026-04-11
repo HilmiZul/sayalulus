@@ -36,45 +36,59 @@
         </div>
 
         <div class="row mb-3">
-          <div class="col-6">
+          <div class="col-md-6">
+            <NuxtLink to="/admin/siswa" class="link">
+              <div class="card p-2">
+                <h3>{{ students }}</h3>
+                Siswa
+              </div>
+            </NuxtLink>
+          </div>
+
+          <div class="col-md-6">
             <div class="card p-2">
-              <h3>{{ students }}</h3>
-              siswa
+              <h3>{{ prosentaseKelulusan }}%</h3>
+              Lulus
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col mb-3">
             <div class="card p-2 bg-danger text-white">
               <h3>{{ tsm }}</h3>
-              TO
-            </div>
-          </div>
+              TSM
+            </div> </div>
+
           <div class="col">
             <div class="card p-2 bg-success text-white">
               <h3>{{ pplg }}</h3>
-              PPLG
+              RPL 
             </div>
           </div>
+
           <div class="col">
             <div class="card p-2 bg-info text-white">
               <h3>{{ tjkt }}</h3>
-              TJKT
+              TKJ
             </div>
           </div>
+
           <div class="col">
             <div class="card p-2 bg-warning text-white">
               <h3>{{ dkv }}</h3>
               DKV
             </div>
           </div>
+
           <div class="col">
             <div class="card p-2 bg-secondary text-white">
               <h3>{{ toi }}</h3>
-              TE
+              TOI
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -103,6 +117,7 @@ const dkv = ref(0)
 const tjkt = ref(0)
 const toi = ref(0)
 const statusTTD = ref(0)
+const prosentaseKelulusan = ref(0)
 
 async function getStatusTTD() {
   const { data, error } = await client
@@ -114,8 +129,21 @@ async function getStatusTTD() {
 
 async function getStudents() {
   const { data, error } = await client.from('kelulusan_siswa').select('*')
-  if (error) console.error(error)
-  else students.value = data.length
+  if(data){
+    students.value = data.length
+    await calculatePercentage(students.value)
+  } else {
+    console.error(error)
+  }
+}
+
+async function calculatePercentage(countStudent) {
+  const { data, error } = await client.from('kelulusan_siswa').select('*').eq('keterangan', 'LULUS')
+  if(data) {
+    prosentaseKelulusan.value = Math.floor((data.length / countStudent) * 100, 2)
+  } else {
+    console.error(error)
+  }
 }
 
 async function getPPLG() {
@@ -169,5 +197,9 @@ onMounted(() => {
 table.table tbody tr td {
   border-top: none !important;
   border-top: 1px solid #ddd;
+}
+
+a.link {
+  text-decoration: none;
 }
 </style>
