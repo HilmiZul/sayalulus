@@ -22,7 +22,9 @@
                   <li>Periksa dengan teliti NIS/Password. </li>
                   <li>Jika data Anda tidak ditemukan, silahkan temui pihak Sekolah pada hari dan jam kerja.</li>
                 </ul>
-
+              </div>
+              <div v-if="timeNotTheSame" class="alert alert-danger small">
+                Waktu Anda tidak sama dengan Server. Pastikan waktu Anda otomatis dan tidak diubah.
               </div>
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
                 KIRIM
@@ -102,6 +104,7 @@ const isResult = ref(false);
 const checking = ref(false)
 const isConfetti = ref(false)
 const isAgree = ref(false)
+const timeNotTheSame = ref(false)
 const setting = ref([])
 const bulan = ref([
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -125,25 +128,50 @@ Demikian peryataan ini dibuat dengan sesungguhnya dalam keadaan sadar dan tanpa 
 `
 
 const onPeriksa = async () => {
-  mismatch.value = false
-  checking.value = true
-  const { data, error } = await client
-    .from("kelulusan_siswa")
-    .select('*')
-    .eq("status", 1)
-    .match({ nis: NIS.value, password: tgl_lahir.value })
-    .single()
-  if (data) {
-    await getSetting()
-    result.value = data
-    isResult.value = true
-    checking.value = false
-    isConfetti.value = true
-  }
-  if(error) {
-    mismatch.value = true
-    checking.value = false
-    isAgree.value = false
+  // ambil waktu dari server dunia berdasarkan zona wilayah.
+  // untuk menghindari mengganti waktu lokal komputer.
+  let timeApi = `https://time.now/developer/api/timezone/Asia/Jakarta`
+  let isClientServerTimeAreSame = false
+  await fetch(timeApi)
+    .then(res => res.json())
+    .then(d => {
+      let dateServer = new Date(d.utc_datetime)
+      let option = {
+        dateStyle: "full",
+        timeStyle: "short"
+      }
+      let formatedServer = new Intl.DateTimeFormat('id-ID', option).format(dateServer)
+      let dateClient = new Date() 
+      let formatClient = new Intl.DateTimeFormat('id-ID', option).format(dateClient)
+      if(formatClient >= formatedServer) isClientServerTimeAreSame = true
+      else isClientServerTimeAreSame = false
+    })
+
+  if(isClientServerTimeAreSame) {
+    mismatch.value = false
+    checking.value = true
+    timeNotTheSame.value = false
+
+    const { data, error } = await client
+      .from("kelulusan_siswa")
+      .select('*')
+      .eq("status", 1)
+      .match({ nis: NIS.value, password: tgl_lahir.value })
+      .single()
+    if (data) {
+      await getSetting()
+      result.value = data
+      isResult.value = true
+      checking.value = false
+      isConfetti.value = true
+    }
+    if(error) {
+      mismatch.value = true
+      checking.value = false
+      isAgree.value = false
+    }
+  } else {
+    timeNotTheSame.value = true
   }
 }
 
