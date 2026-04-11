@@ -20,7 +20,7 @@
                     <li>Update ini akan menimpa yang lama</li>
                     <li>Isi data kelulusan dengan format <nuxt-link to="https://docs.google.com/spreadsheets/d/1NEi2EOG5UXJtqd7x6PWKYiYKGcw2b7hGcRYZpr1F6Ac/edit?usp=sharing" target="_blank">disini</nuxt-link></li>
                     <li>Download sebagai file <code>.csv</code></li>
-                    <li>Upload file tersebut pada form dibaah</li>
+                    <li>Upload file tersebut pada form dibawah</li>
                     <li>Tunggu hingga proses update berhasil tersimpan!</li>
                   </ul>
                 </div>
