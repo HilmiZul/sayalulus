@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <h1 class="mt-3">Kelulusan / Site Administration</h1>
-      <h6 class="mb-3">SMKN 4 Tasikmalaya</h6>
+      <h6 class="mb-3">
+        <span v-if="isLoading">
+          <span class="spinner-border spinner-border-sm me-1"></span>
+          Sedang memuat
+        </span>
+        <span v-else>{{ setting?.nama_sekolah }}</span>
+      </h6>
       <div class="col-md-3">
         <div class="card bg-shadow border-0 mb-4">
           <div class="card-body">
@@ -49,9 +55,28 @@
   </div>
 </template>
 
+<script setup>
+let client = useSupabaseClient()
+let isLoading = ref(true)
+let setting = ref()
+
+async function getSetting() {
+  isLoading.value = true
+  let { data, error } = await client.from('kelulusan_setting').select().eq('id', 1).single()
+  if(data) {
+    setting.value = data
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  getSetting()
+})
+</script>
+
 <style>
 .list-link {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #000;
 }
 
