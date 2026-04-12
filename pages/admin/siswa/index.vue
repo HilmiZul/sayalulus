@@ -11,13 +11,13 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                Update Dengan Yang Baru
+                Update data saat ini
                 <button class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body small">
                 <div class="alert alert-info">
                   <ul class="m-0 px-3">
-                    <li>Update ini akan menimpa yang lama</li>
+                    <li>Update ini akan menimpa yang lama (saat ini)</li>
                     <li>Isi data kelulusan dengan format <nuxt-link to="https://docs.google.com/spreadsheets/d/1NEi2EOG5UXJtqd7x6PWKYiYKGcw2b7hGcRYZpr1F6Ac/edit?usp=sharing" target="_blank">disini</nuxt-link></li>
                     <li>Download sebagai file <code>.csv</code></li>
                     <li>Upload file tersebut pada form dibawah</li>
