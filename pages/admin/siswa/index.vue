@@ -8,7 +8,7 @@
         <h3><i class="bi bi-people"></i> Siswa</h3>
 
         <div class="modal" id="update-record">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 Update Dengan Yang Baru
@@ -27,7 +27,7 @@
 
                 <div class="mb-3">
                   <label for="file">Pilih file <code>.csv</code></label>
-                  <input @change="getFile" id="file" type="file" accept=".csv" class="form form-control-file">
+                  <input @change="getFile" id="file" type="file" accept=".csv" class="form form-control">
                 </div>
                 
                 <div v-if="isLoading" class="mb-3 text-muted fs-italic">
@@ -59,15 +59,22 @@
 
         <div v-else class="table-responsive">
           <div class="mb-3 quicksand small">
-            Filter by:
-            <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
-              <button @click="filterBy('')" type="button" class="btn btn-light">All.</button>
+            Filter Jurusan:
+              <select @change="filterBy" v-model="opsiFilterJurusan" class="form-control-sm form-control-select" name="filter-jurusan" id="filter-jurusan">
+                <option value="">Semua</option>
+                <option value="Teknik Sepeda Motor">TSM</option>
+                <option value="Rekayasa Perangkat Lunak">RPL</option>
+                <option value="Teknik Komputer dan Jaringan">TKJ</option>
+                <option value="Desain Komunikasi Visual">DKV</option>
+                <option value="Teknik Otomasi Industri">TOI</option>
+              </select>
+              <!--<button @click="filterBy('')" type="button" class="btn btn-light">All.</button>
               <button @click="filterBy('Teknik Sepeda Motor')" type="button" class="btn btn-light">TSM</button>
               <button @click="filterBy('Rekayasa Perangkat Lunak')" type="button" class="btn btn-light">RPL</button>
               <button @click="filterBy('Teknik Komputer dan Jaringan')" type="button" class="btn btn-light">TKJ</button>
               <button @click="filterBy('Desain Komunikasi Visual')" type="button" class="btn btn-light">DKV</button>
               <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TOI</button>
-            </div>
+              -->
             <div class="my-2 "><i class="bi bi-people"></i> {{ students.length }}</div>
           </div>
 
@@ -75,54 +82,25 @@
             <thead>
               <tr>
                 <th width="5%">#</th>
-                <th>Nama</th>
-                <th>Kelas</th>
-                <th>Keterangan</th>
+                <th width="70%">Nama</th>
                 <th>TTD Pernyataan</th>
               </tr>
             </thead>
 
             <tbody>
               <tr v-if="isEmptyRecord">
-                <td colspan="5" class="text-center text-muted">Tidak tersedia</td>
+                <td colspan="3" class="text-center text-muted">Tidak tersedia</td>
               </tr>
               
               <tr v-else v-for="(student, i) in students" :key="i" class="p-0">
-                <td>{{ i+1 }}.</td>
+                <td><div class="border border-dark p-1 text-center rounded-2 small">{{ i+1 }}</div></td>
                 <td>
-                  <a title="Change status TTD" data-bs-toggle="modal" :data-bs-target="`#changeStatus-${student.id}`" @click="setStudentID(student.id)" href="#" class="border-1 border-bottom border-dark pb-1 text-decoration-none">
-                    {{ student.nama }}
+                  <a title="Preview & Change status TTD" data-bs-toggle="modal" data-bs-target="#preview-siswa" @click="setStudentID(student.id, student)" href="#" class="text-decoration-none">
+                    <div v-if="student.keterangan == 'LULUS'">{{ student.nama }}</div> 
+                    <div v-else class="text-danger">{{ student.nama }}</div>
+                    <span class="text-muted">{{ student.kelas }}</span>
                   </a>
-
-                  <div class="modal fade" :id="`changeStatus-${student.id}`">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header fs-6">{{ student.nama }} <span class="text-muted small">{{ student.kelas }}</span></div>
-                        <div class="modal-body fs-6">
-                          <div v-if="msgSuccessUpdateStatus" class="alert alert-success">Berhasil diperbaharui.</div>
-                          NIS: {{ student.nis }} <br>
-                          Password: {{ student.password }} <br>
-                          Keterangan: {{ student.keterangan }} <br>
-                          TTD. Pernyataan: {{ student.status == 1 ? '✅ Sudah Tandatangan' : '❌ Belum Tandatangan' }}
-                          <hr />
-                          <div class="alert alert-info small"><i class="bi bi-info-circle-fill"></i> Tutup jika tidak ada pembaharuan Status TTD pernyataan.</div>
-                          <select v-model="newStatusTTD" class="form-control form-control-sm form-select my-2" required>
-                            <option disable value="">&#8212;Ubah Status&#8212;</option>
-                            <option value="1">✅ Sudah tandatangan</option>
-                            <option value="0">❌ Belum tandatangan</option>
-                          </select>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-dark" data-bs-dismiss="modal" @click="updateStatusTTD" :disabled="newStatusTTD.length < 1">Simpan</button>
-                          <button class="btn" data-bs-dismiss="modal">Tutup</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </td>
-                <td>{{ student.kelas }}</td>
-                <td>{{ student.keterangan }}</td>
                 <td>
                   <span v-if="student.status == 1" class="badge bg-success">sudah</span>
                   <span v-else class="badge bg-danger">belum</span>
@@ -131,6 +109,42 @@
             </tbody>
 
           </table>
+
+          <div class="modal" id="preview-siswa">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header fs-6">{{ previewStudent?.nama }} <span class="text-muted small">{{ previewStudent?.kelas }}</span></div>
+                <div class="modal-body fs-6">
+                    <div v-if="msgSuccessUpdateStatus" class="alert alert-success">Berhasil diperbaharui.</div>
+                    <div class="text-muted">NIS</div>
+                    <span class="fw-bold">{{ previewStudent?.nis }}</span>
+
+                    <div class="mt-2 text-muted">Password</div>
+                    <span class="fw-bold">{{ previewStudent?.password }}</span>
+
+                    <div class="mt-2 text-muted">Keterangan</div>
+                    <span class="fw-bold">{{ previewStudent?.keterangan }}</span>
+
+                    <div class="mt-2 text-muted">TTD. Pernyataan</div>
+                    <span class="fw-bold">{{ previewStudent?.status == 1 ? '✅ Sudah Tandatangan' : '❌ Belum Tandatangan' }}</span>
+
+                    <hr />
+
+                    <div class="alert alert-info small"><i class="bi bi-info-circle-fill"></i> Tutup jika tidak ada perubahan Status.</div>
+                    <select v-model="newStatusTTD" class="form-control form-control-sm form-select my-2" required>
+                      <option disable value="">&#8212;Ubah Status&#8212;</option>
+                      <option value="1">✅ Sudah tandatangan</option>
+                      <option value="0">❌ Belum tandatangan</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-dark" data-bs-dismiss="modal" @click="updateStatusTTD" :disabled="newStatusTTD.length < 1">Simpan</button>
+                  <button class="btn" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -152,7 +166,6 @@ useHead({
     },
   ],
 })
-
 const client = useSupabaseClient()
 const students = ref([])
 const newStatusTTD = ref('')
@@ -163,6 +176,8 @@ const isLoading = ref(false)
 const isError = ref(false)
 const isUploadSuccess = ref(false)
 const isEmptyRecord = ref(false)
+const previewStudent = ref()
+const opsiFilterJurusan = ref('')
 
 async function getStudents() {
   isLoading.value = true
@@ -183,13 +198,13 @@ async function getStudents() {
   else console.error(error)
 }
 
-async function filterBy(kompetensi) {
+async function filterBy() {
   isEmptyRecord.value = false
-  if(kompetensi) {
+  if(opsiFilterJurusan.value) {
     const { data, error } = await client
       .from('kelulusan_siswa')
       .select('*')
-      .eq('kompetensi', kompetensi)
+      .eq('kompetensi', opsiFilterJurusan.value)
       .order('status', { ascending: true })
     if(data) {
       students.value = data
@@ -213,9 +228,10 @@ async function filterBy(kompetensi) {
   }
 }
 
-function setStudentID(id) {
+function setStudentID(id, student) {
   msgSuccessUpdateStatus.value = false
   studentID.value = id
+  previewStudent.value = student
 }
 
 async function updateStatusTTD() {
