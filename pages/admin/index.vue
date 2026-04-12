@@ -13,7 +13,7 @@
               <div class="modal" id="unsign">
                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header fs-4 text-dark">Belum TTD surat pernyataan</div>
+                    <div class="modal-header text-dark">Belum TTD surat pernyataan</div>
                     <div class="modal-body">
                       <table class="table table-hover quicksand small">
                         <tbody>
