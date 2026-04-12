@@ -107,44 +107,42 @@
                 </td>
               </tr>
             </tbody>
-
           </table>
+        </div>
 
-          <div class="modal" id="preview-siswa">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header fs-6">{{ previewStudent?.nama }} <span class="text-muted small">{{ previewStudent?.kelas }}</span></div>
-                <div class="modal-body fs-6">
-                    <div v-if="msgSuccessUpdateStatus" class="alert alert-success">Berhasil diperbaharui.</div>
-                    <div class="text-muted">NIS</div>
-                    <span class="fw-bold">{{ previewStudent?.nis }}</span>
+        <div class="modal" id="preview-siswa">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header fs-6">{{ previewStudent?.nama }} <span class="text-muted small">{{ previewStudent?.kelas }}</span></div>
+              <div class="modal-body fs-6">
+                  <div v-if="msgSuccessUpdateStatus" class="alert alert-success">Berhasil diperbaharui.</div>
+                  <div class="text-muted">NIS</div>
+                  <span class="fw-bold">{{ previewStudent?.nis }}</span>
 
-                    <div class="mt-2 text-muted">Password</div>
-                    <span class="fw-bold">{{ previewStudent?.password }}</span>
+                  <div class="mt-2 text-muted">Password</div>
+                  <span class="fw-bold">{{ previewStudent?.password }}</span>
 
-                    <div class="mt-2 text-muted">Keterangan</div>
-                    <span class="fw-bold">{{ previewStudent?.keterangan }}</span>
+                  <div class="mt-2 text-muted">Keterangan</div>
+                  <span class="fw-bold">{{ previewStudent?.keterangan }}</span>
 
-                    <div class="mt-2 text-muted">TTD. Pernyataan</div>
-                    <span class="fw-bold">{{ previewStudent?.status == 1 ? '✅ Sudah Tandatangan' : '❌ Belum Tandatangan' }}</span>
+                  <div class="mt-2 text-muted">TTD. Pernyataan</div>
+                  <span class="fw-bold">{{ previewStudent?.status == 1 ? '✅ Sudah Tandatangan' : '❌ Belum Tandatangan' }}</span>
 
-                    <hr />
+                  <hr />
 
-                    <div class="alert alert-info small"><i class="bi bi-info-circle-fill"></i> Tutup jika tidak ada perubahan Status.</div>
-                    <select v-model="newStatusTTD" class="form-control form-control-sm form-select my-2" required>
-                      <option disable value="">&#8212;Ubah Status&#8212;</option>
-                      <option value="1">✅ Sudah tandatangan</option>
-                      <option value="0">❌ Belum tandatangan</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-dark" data-bs-dismiss="modal" @click="updateStatusTTD" :disabled="newStatusTTD.length < 1">Simpan</button>
-                  <button class="btn" data-bs-dismiss="modal">Tutup</button>
-                </div>
+                  <div class="alert alert-info small"><i class="bi bi-info-circle-fill"></i> Tutup jika tidak ada perubahan Status.</div>
+                  <select v-model="newStatusTTD" class="form-control form-control-sm form-select my-2" required>
+                    <option disable value="">&#8212;Ubah Status&#8212;</option>
+                    <option value="1">✅ Sudah tandatangan</option>
+                    <option value="0">❌ Belum tandatangan</option>
+                  </select>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-dark" data-bs-dismiss="modal" @click="updateStatusTTD" :disabled="newStatusTTD.length < 1">Simpan</button>
+                <button class="btn" data-bs-dismiss="modal">Tutup</button>
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
