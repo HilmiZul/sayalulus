@@ -13,7 +13,7 @@
 
           <div v-else>
             <!-- Nav Tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs small" role="tablist">
               <li class="nav-item" role="presentation">
                 <a href="#pengaturan-umum" aria-selected="true" role="tab" class="nav-link active" data-bs-toggle="tab">
                   Umum
