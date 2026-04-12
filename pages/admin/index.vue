@@ -10,17 +10,18 @@
             <div v-if="statusTTD.length > 0" class="alert alert-warning">
               Ada {{ statusTTD.length }} siswa belum menandatangani surat pernyataan.
               <nuxt-link to="#" class="link" data-bs-toggle="modal" data-bs-target="#unsign">Lihat</nuxt-link>
-              <div class="modal fade" id="unsign">
-                <div class="modal-dialog">
+              <div class="modal" id="unsign">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header fs-4 text-dark">Belum tandatangan surat pernyataan</div>
+                    <div class="modal-header fs-4 text-dark">Belum TTD surat pernyataan</div>
                     <div class="modal-body">
                       <table class="table table-hover quicksand small">
                         <tbody>
                           <tr v-for="(s, i) in statusTTD" :key="i">
-                            <td width="5%">{{ i+1 }}.</td>
-                            <td>{{ s.nama }}</td>
-                            <td>{{ s.kelas }}</td>
+                            <td>
+                              <div class="fw-bold">{{ s.nama }}</div>
+                              <div class="text-muted">{{ s.kelas }}</div>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
