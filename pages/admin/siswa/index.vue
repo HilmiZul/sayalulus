@@ -144,7 +144,7 @@ definePageMeta({
   middleware: ['auth'],
 })
 useHead({
-  title: 'Kelulusan / Site Administration',
+  title: 'Siswa / Site Administration',
   meta: [
     {
       name: 'description',

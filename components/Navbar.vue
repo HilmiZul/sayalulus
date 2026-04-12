@@ -14,7 +14,7 @@
               style="width: 1.2em"
             />
             <span class="mx-3 prototype text-dark">
-              <span class="border-top border-left border-bottom border-dark p-1">Kelulusan</span>
+              <span class="border-top border-left border-bottom border-dark p-1">SayaLulus</span>
             </span>
           </NuxtLink>
           <button

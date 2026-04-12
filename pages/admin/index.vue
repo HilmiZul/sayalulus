@@ -100,7 +100,7 @@ definePageMeta({
   middleware: ['auth'],
 })
 useHead({
-  title: 'Kelulusan / Site Administration',
+  title: 'Statistik / Site Administration',
   meta: [
     {
       name: 'description',

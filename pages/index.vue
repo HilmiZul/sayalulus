@@ -6,7 +6,15 @@
 </template>
 
 <script setup>
-useHead({ title: "Info Kelulusan SMKN 4 Tasikmalaya" })
+useHead({ 
+  title: "SayaLulus / Info Kelulusan SMKN 4 Tasikmalaya",
+  meta: [
+    {
+      name: 'description',
+      content: 'Info Kelulusan SMKN 4 Tasikmalaya',
+    },
+  ],
+})
 const isCounting = ref(true)
 
 function handleEndCounting(newValue) {

@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-4 offset-md-4 mt-5">
-    <h2 class="text-center">Pengumuman<span class="border-1 border-bottom border-left border-top border-dark">Kelulusan</span></h2>
+    <h2 class="text-center"><span class="px-2 border-1 border-bottom border-left border-top border-dark">SayaLulus</span></h2>
     <h6 class="text-center mb-3">
       <span v-if="isLoadingSetting">
         <span class="spinner-border spinner-border-sm me-1"></span>
@@ -42,11 +42,12 @@ definePageMeta({
 })
 
 useHead({
-  title: 'Login / Kelulusan',
+  title: 'Login / SayaLulus',
   meta: [
     { name: 'description', content: 'Login ke halaman admin' }
   ]
 })
+const title = ref("SayaLulus")
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 const errorStatus = ref(false)

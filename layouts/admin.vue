@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 class="mt-3">Kelulusan / Site Administration</h1>
+      <h1 class="mt-3">{{ title }} / Site Administration</h1>
       <h6 class="mb-3">
         <span v-if="isLoading">
           <span class="spinner-border spinner-border-sm me-1"></span>
@@ -56,6 +56,7 @@
 </template>
 
 <script setup>
+let title = ref("SayaLulus")
 let client = useSupabaseClient()
 let isLoading = ref(true)
 let setting = ref()
