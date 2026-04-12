@@ -23,9 +23,9 @@
           <div class="mb-3">
             <input v-model="password" type="password" class="form-control" placeholder="katasandi" required>
           </div>
-          <button class="btn btn-dark btn-sm" :disabled="isLoading">
+          <button class="btn btn-dark btn-sm" :disabled="isLoading || (email.length < 3 || password.length < 5)">
             <span v-if="isLoading">bentar...</span>
-            <span v-else>Gass!</span>
+            <span v-else>Masuk <i class="bi bi-send"></i></span>
           </button>
         </form>
       </div>
