@@ -4,7 +4,7 @@
       <div class="col-md-6 mx-auto mb-5">
         <div class="text-center fs-3 prototype mb-4" >
           Pengumuman Kelulusan
-          <div class="fs-4">SMKN 4 Tasikmalaya</div>
+          <div class="fs-4">{{ setting?.nama_sekolah }}</div>
           <div class="fs-5 quicksand text-dark">{{ tahun-1 }}/{{ tahun }}</div>
         </div>
         <div class="card bg-shadow border-0">
