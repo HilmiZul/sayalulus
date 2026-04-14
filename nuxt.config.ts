@@ -4,9 +4,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-04-29',
   devtools: { enabled: false },
   css: [
-    "bootstrap/dist/css/bootstrap.min.css",
+    "bootswatch/dist/sketchy/bootstrap.min.css",
     "bootstrap-icons/font/bootstrap-icons.css",
-    "~/assets/css/bs.sketchy.css"
   ],
   modules: [
     "@nuxtjs/supabase",
