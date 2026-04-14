@@ -59,15 +59,15 @@
 
         <div v-else class="table-responsive">
           <div class="mb-3 quicksand small">
-            Filter Jurusan:
-              <select @change="filterBy" v-model="opsiFilterJurusan" class="form-control-sm form-control-select" name="filter-jurusan" id="filter-jurusan">
-                <option value="">Semua</option>
-                <option value="Teknik Sepeda Motor">TSM</option>
-                <option value="Rekayasa Perangkat Lunak">RPL</option>
-                <option value="Teknik Komputer dan Jaringan">TKJ</option>
-                <option value="Desain Komunikasi Visual">DKV</option>
-                <option value="Teknik Otomasi Industri">TOI</option>
-              </select>
+            <select @change="filterBy" v-model="opsiFilterJurusan" class="form-control-sm form-control-select" name="filter-jurusan" id="filter-jurusan">
+              <option value="">Semua</option>
+              <option value="Teknik Sepeda Motor">TSM</option>
+              <option value="Rekayasa Perangkat Lunak">RPL</option>
+              <option value="Teknik Komputer dan Jaringan">TKJ</option>
+              <option value="Desain Komunikasi Visual">DKV</option>
+              <option value="Teknik Otomasi Industri">TOI</option>
+            </select>
+
               <!--<button @click="filterBy('')" type="button" class="btn btn-light">All.</button>
               <button @click="filterBy('Teknik Sepeda Motor')" type="button" class="btn btn-light">TSM</button>
               <button @click="filterBy('Rekayasa Perangkat Lunak')" type="button" class="btn btn-light">RPL</button>
@@ -75,7 +75,7 @@
               <button @click="filterBy('Desain Komunikasi Visual')" type="button" class="btn btn-light">DKV</button>
               <button @click="filterBy('Teknik Otomasi Industri')" type="button" class="btn btn-light">TOI</button>
               -->
-            <div class="my-2 "><i class="bi bi-people"></i> {{ students.length }}</div>
+            <div class="my-2 ">Jumlah: {{ students.length }}</div>
           </div>
 
           <table class="table table-hover small quicksand">
