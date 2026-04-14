@@ -12,7 +12,7 @@
       <div class="col-md-3">
         <div class="card bg-shadow border-0 mb-4">
           <div class="card-body p-2">
-            <ul class="list-group small">
+            <ul class="list-group">
               <nuxt-link to="/admin" class="list-link border-bottom border-1">
                 <li class="list-group-item">
                   Statistik <span class="float-end"><i class="bi bi-chevron-right"></i></span>
