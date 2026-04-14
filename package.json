@@ -14,7 +14,7 @@
     "@supabase/gotrue-js": "^2.62.2",
     "bootstrap": "5.2",
     "bootstrap-icons": "^1.11.3",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.15.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
