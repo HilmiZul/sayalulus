@@ -10,11 +10,11 @@
             <img
               src="https://upload.wikimedia.org/wikipedia/id/9/9e/Logo_SMK_Negeri_4_Tasikmalaya.png"
               alt="logo"
-              class="logo"
+              class="logo ms-2"
               style="width: 1.2em"
             />
-            <span class="mx-3 prototype text-dark">
-              <span class="border-top border-left border-bottom border-dark p-1">SayaLulus</span>
+            <span class="mx-2 prototype text-dark">
+              <span class="border-top border-start border-bottom border-dark p-1">SayaLulus</span>
             </span>
           </NuxtLink>
           <button

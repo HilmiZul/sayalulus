@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-4 offset-md-4 mt-5">
-    <h2 class="text-center"><span class="px-2 border-1 border-bottom border-left border-top border-dark">SayaLulus</span></h2>
+    <h2 class="text-center"><span class="px-2 border-bottom border-start border-top border-dark">SayaLulus</span></h2>
     <h6 class="text-center mb-3">
       <span v-if="isLoadingSetting">
         <span class="spinner-border spinner-border-sm me-1"></span>
