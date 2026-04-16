@@ -9,8 +9,9 @@
           <div class="col">
             <div v-if="statusTTD.length > 0" class="alert alert-warning">
               Ada {{ statusTTD.length }} siswa belum menandatangani surat pernyataan.
-              <nuxt-link to="#" class="link" data-bs-toggle="modal" data-bs-target="#unsign">Lihat</nuxt-link>
-              <div class="modal" id="unsign">
+              <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#unsign">Lihat</button>
+
+              <div class="modal" id="unsign" tabindex="-1">
                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header text-dark">Belum TTD surat pernyataan</div>
@@ -32,6 +33,7 @@
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
