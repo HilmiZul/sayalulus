@@ -7,7 +7,7 @@
         </span>
         <h3><i class="bi bi-people"></i> Siswa</h3>
 
-        <div class="modal" id="update-record">
+        <div class="modal" id="update-record" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -110,10 +110,12 @@
           </table>
         </div>
 
-        <div class="modal" id="preview-siswa">
+        <div class="modal" id="preview-siswa" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-              <div class="modal-header fs-6">{{ previewStudent?.nama }} <span class="text-muted small">{{ previewStudent?.kelas }}</span></div>
+              <div class="modal-header">
+                {{ previewStudent?.nama }}
+              </div>
               <div class="modal-body fs-6">
                   <div v-if="msgSuccessUpdateStatus" class="alert alert-success">Berhasil diperbaharui.</div>
                   <div class="text-muted">NIS</div>
