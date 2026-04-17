@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <footer class="card text-center small p-2 bg-shadow bg-light border-0">
         <div>v{{ version }}</div>
-        &copy; 2023 - {{ tahun }}.
+        &copy; 2021 - {{ tahun }}.
       </footer>
     </div>
   </div>
