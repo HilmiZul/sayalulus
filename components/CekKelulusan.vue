@@ -29,18 +29,18 @@
               <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
                 KIRIM
               </button>
-              <div class="modal fade" id="SuratPernyataan">
+              <div class="modal fade" id="SuratPernyataan" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header"><h3 class="quicksand">Saya Menyatakan</h3></div>
                     <div class="modal-body">
                       <MDC v-if="md_text_pernyataan_siswa" :value="md_text_pernyataan_siswa" tag="article" />
                       <hr/>
-                      <div class="my-2">
-                        <label for="ceklisPernyataan" class="ms-2 me-2">
-                          <input v-model="isAgree" class="form-input checkbox" id="ceklisPernyataan" type="checkbox"/>
-                          <strong>Ya, Saya setuju dengan Pernyataan diatas.</strong>
+                      <div class="my-2 form-check">
+                        <label for="ceklisPernyataan" class="form-check-label ms-2 me-2">
+                          Ya, Saya setuju dengan Pernyataan diatas.
                         </label>
+                        <input v-model="isAgree" class="form-check-input" id="ceklisPernyataan" type="checkbox"/>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -110,22 +110,6 @@ const bulan = ref([
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 ])
-const md_text_pernyataan = `
-Saya adalah merupakan Calon Lulusan SMKN 4 Tasikmalaya Tahun Pelajaran ${tahun-1}/${tahun}, dalam rangka menghadapi kelulusan, dengan ini saya menyatakan:
-1. Tidak akan melakukan euphoria yang berlebihan dan tindak negatif dalam merayakan kelulusan dari SMKN 4 Tasikmalaya, seperti:
-
-    a. Curat-coret pada pakaian seragam sekolah atau media/fasilitas lainnya;
-
-    b. Konvoi/iring-iringan dengan kendaraan bermotor dan mengganggu ketertiban umum, atau;
-
-    c. Penyalahgunaan media sosial dan kriminal lainnya yang melanggar norma dan/atau aturan yang berlaku dimasyarakat sehingga merugikan diri sendiri maupun orang lain.
-
-2. Tidak akan mengadakan kegiatan/acara perpisahan baik pada lingkup kelas, program keahlian, sekolah atau antar sekolah dalam bentuk apapun.
-
-3. Pihak SMKN 4 Tasikmalaya secara institusi terlepas dari kewajiban dan tanggung jawab, apabila saya bermasalah secara hukum melanggar peraturan atau ketentuan dimasyarakat, serta perundang-udangan yang berlaku.
-
-Demikian peryataan ini dibuat dengan sesungguhnya dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun, serta saya siap dan bertanggung jawab sepenuhnya menanggung segala konsekuensi yang terjadi akibat dari dibuatnya pertanyaan ini.
-`
 const md_text_pernyataan_siswa = ref()
 
 const onPeriksa = async () => {
