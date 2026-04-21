@@ -15,11 +15,11 @@
                 <input v-model="NIS" type="text" class="form-control form-control-lg" placeholder="NIS" autofocus required :disabled="checking" />
               </div>
               <div class="input-group my-3">
-                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="Password" required :disabled="checking" />
+                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="PIN" required :disabled="checking" />
               </div>
               <div v-if="mismatch" class="alert alert-danger small">
                 <ul>
-                  <li>Periksa dengan teliti NIS/Password. </li>
+                  <li>Periksa dengan teliti NIS/PIN. </li>
                   <li>Jika data Anda tidak ditemukan, silahkan temui pihak Sekolah pada hari dan jam kerja.</li>
                 </ul>
               </div>
