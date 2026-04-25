@@ -78,7 +78,9 @@
           <div class="fs-6 text-grey">{{ result.ttl }}</div>
           <div class="fs-6 text-grey">{{ result.kelas }}</div>
           <div class="fs-6 mb-3 text-grey">{{ result.kompetensi}}</div>
-          <span class="fs-6">dinyatakan <span @click="moreConfetti" class="keterangan"><em>"{{ result.keterangan }}"</em></span></span>
+          <span class="fs-6">dinyatakan 
+            <div @click="moreConfetti" class="fs-1 prototype text-success keterangan">{{ result.keterangan }}</div>
+          </span>
           <p class="fs-6">
             Dari satuan Pendidikan SMKN 4 Tasikmalaya Tahun Pelajaran
             {{ tahun-1 }}/{{ tahun }}.
