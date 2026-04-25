@@ -1,4 +1,8 @@
 # Changelog
+
+### 25 April 2026
+- Improvement: more big text "LULUS"
+
 ### 11 April 2026 
 - Create feat. update and replace current record
 - Display percentage kelulusan
