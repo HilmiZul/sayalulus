@@ -3,6 +3,7 @@
 ### v2.2 (1 Mei 2026)
 - Replace Navbar with Header image logo
 - Add dynamic URL image logo in setting
+- Bug fix
 
 ### 25 April 2026
 - Improvement: more big text "LULUS"
