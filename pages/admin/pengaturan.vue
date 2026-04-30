@@ -47,6 +47,10 @@
                         <label for="alamat_sekolah">Alamat Sekolah</label>
                         <textarea v-model="setting.alamat_sekolah" id="alamat_sekolah" rows="4" class="form-control" placeholder="Alamat lengkap sekolah" required></textarea>
                       </div>
+                      <div class="my-3">
+                        <label for="logo_sekolah">Logo Sekolah <span class="text-muted">(URL ekssternal)</span></label>
+                        <input v-model="setting.logo_sekolah" id="logo_sekolah" type="text" class="form-control" placeholder="https://" required />
+                      </div>
                       <button class="btn btn-dark" :disabled="isSaving">
                         <span v-if="isSaving">Sedang menyimpan</span>
                         <span velse>Simpan</span>
@@ -130,7 +134,16 @@ useHead({
 })
 
 const client = useSupabaseClient()
-const setting = ref([])
+const setting = ref({
+  nomor_surat: '',
+  tgl_penetapan: '',
+  tgl_pengumuman: '',
+  waktu_pengumuman: '',
+  nama_sekolah: '',
+  alamat_sekolah: '',
+  pernyataan_siswa: '',
+  logo_sekolah: '',
+})
 const statusSuccessUpdate = ref(false)
 const isSaving = ref(false)
 
@@ -152,15 +165,7 @@ async function updateSetting() {
   statusSuccessUpdate.value = false
   const { data, error } = await client
     .from('kelulusan_setting')
-    .update({
-      nomor_surat: setting.value.nomor_surat,
-      tgl_penetapan: setting.value.tgl_penetapan,
-      tgl_pengumuman: setting.value.tgl_pengumuman,
-      waktu_pengumuman: setting.value.waktu_pengumuman,
-      nama_sekolah: setting.value.nama_sekolah,
-      alamat_sekolah: setting.value.alamat_sekolah,
-      pernyataan_siswa: setting.value.pernyataan_siswa,
-    })
+    .update(setting.value)
     .eq('id', 1)
     .select()
   if (data) {
