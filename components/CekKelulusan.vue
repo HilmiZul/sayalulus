@@ -130,8 +130,9 @@ const onPeriksa = async () => {
       let formatedServer = new Intl.DateTimeFormat('id-ID', option).format(dateServer)
       let dateClient = new Date() 
       let formatClient = new Intl.DateTimeFormat('id-ID', option).format(dateClient)
-      if(formatClient >= formatedServer) isClientServerTimeAreSame = true
-      else isClientServerTimeAreSame = false
+
+      if(formatClient == formatedServer) isClientServerTimeAreSame = true
+      // else isClientServerTimeAreSame = false
     })
 
   if(isClientServerTimeAreSame) {
