@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center mt-5 mb-5">
-    <div class="col-md-4">
-      <footer class="card text-center small p-2 bg-shadow bg-light border-0">
+    <div class="col-md-2">
+      <footer class="card text-center smallest p-2 bg-shadow bg-light border-0">
         <div>v{{ version }}</div>
         &copy; 2021 - {{ tahun }}.
       </footer>
@@ -22,5 +22,9 @@ footer {
 footer .link {
   color: inherit;
   text-decoration: none;
+}
+
+.smallest {
+  font-size: .7em;
 }
 </style>
