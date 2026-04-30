@@ -48,7 +48,7 @@
                         <textarea v-model="setting.alamat_sekolah" id="alamat_sekolah" rows="4" class="form-control" placeholder="Alamat lengkap sekolah" required></textarea>
                       </div>
                       <div class="my-3">
-                        <label for="logo_sekolah">Logo Sekolah <span class="text-muted">(URL ekssternal)</span></label>
+                        <label for="logo_sekolah">Logo Sekolah <span class="text-muted">(URL eksternal)</span></label>
                         <input v-model="setting.logo_sekolah" id="logo_sekolah" type="text" class="form-control" placeholder="https://" required />
                       </div>
                       <button class="btn btn-dark" :disabled="isSaving">
