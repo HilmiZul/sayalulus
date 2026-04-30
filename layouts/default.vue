@@ -1,7 +1,10 @@
 <template>
   <div class="bg">
-    <Navbar />
+    <!-- <Navbar /> -->
     <div class="container py-4">
+
+      <Header />
+
       <slot />
       <Foot />
     </div>
@@ -47,7 +50,7 @@ body {
 }
 
 .logo {
-  width: 50px;
+  width: 3.3em;
 }
 
 .bg-yellow {
