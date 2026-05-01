@@ -121,7 +121,7 @@
                   <div class="text-muted">NIS</div>
                   <span class="fw-bold">{{ previewStudent?.nis }}</span>
 
-                  <div class="mt-2 text-muted">Password</div>
+                  <div class="mt-2 text-muted">PIN</div>
                   <span class="fw-bold">{{ previewStudent?.password }}</span>
 
                   <div class="mt-2 text-muted">Keterangan</div>
