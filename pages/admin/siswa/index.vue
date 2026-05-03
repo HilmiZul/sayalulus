@@ -82,7 +82,7 @@
             <thead>
               <tr>
                 <th width="5%">#</th>
-                <th width="70%">Nama</th>
+                <th width="73%">Nama</th>
                 <th>TTD Pernyataan</th>
               </tr>
             </thead>
@@ -98,7 +98,8 @@
                   <a title="Preview & Change status TTD" data-bs-toggle="modal" data-bs-target="#preview-siswa" @click="setStudentID(student.id, student)" href="#" class="text-decoration-none">
                     <div v-if="student.keterangan == 'LULUS'">{{ student.nama }}</div> 
                     <div v-else class="text-danger">{{ student.nama }}</div>
-                    <span class="text-muted">{{ student.kelas }}</span>
+                    <span v-if="student.kelas" class="text-muted">{{ student.kelas }}</span>
+                    <span v-else class="text-muted">&#8212;</span>
                   </a>
                 </td>
                 <td>
@@ -122,7 +123,7 @@
                   <span class="fw-bold">{{ previewStudent?.nis }}</span>
 
                   <div class="mt-2 text-muted">PIN</div>
-                  <span class="fw-bold">{{ previewStudent?.password }}</span>
+                  <span class="fw-bold">{{ previewStudent?.pin }}</span>
 
                   <div class="mt-2 text-muted">Keterangan</div>
                   <span class="fw-bold">{{ previewStudent?.keterangan }}</span>
@@ -181,6 +182,7 @@ const opsiFilterJurusan = ref('')
 
 async function getStudents() {
   isLoading.value = true
+  countNotPassed.value = 0
   const { data, error } = await client
     .from('kelulusan_siswa')
     .select('*')
