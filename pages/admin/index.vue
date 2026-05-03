@@ -21,7 +21,8 @@
                           <tr v-for="(s, i) in statusTTD" :key="i">
                             <td>
                               <div class="fw-bold">{{ s.nama }}</div>
-                              <div class="text-muted">{{ s.kelas }}</div>
+                              <div v-if="s.kelas" class="text-muted">{{ s.kelas }}</div>
+                              <div v-else class="text-muted">&#8212;</div>
                             </td>
                           </tr>
                         </tbody>
