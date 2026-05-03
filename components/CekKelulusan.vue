@@ -141,7 +141,7 @@ const onPeriksa = async () => {
     timeNotTheSame.value = false
 
     const { data, error } = await client
-      .from("kelulusan_siswa_dev")
+      .from("kelulusan_siswa")
       .select('*')
       .eq("status", 1)
       .match({ nis: NIS.value, pin: pin.value })
