@@ -15,7 +15,7 @@
                 <input v-model="NIS" type="text" class="form-control form-control-lg" placeholder="NIS" autofocus required :disabled="checking" />
               </div>
               <div class="input-group my-3">
-                <input v-model="tgl_lahir" type="password" class="form-control form-control-lg" placeholder="PIN" required :disabled="checking" />
+                <input v-model="pin" type="password" class="form-control form-control-lg" placeholder="PIN" required :disabled="checking" />
               </div>
               <div v-if="mismatch" class="alert alert-danger small">
                 <ul>
@@ -26,7 +26,7 @@
               <div v-if="timeNotTheSame" class="alert alert-danger small">
                 Waktu Anda tidak sama dengan Server. Pastikan waktu Anda otomatis dan tidak diubah.
               </div>
-              <button :disabled="NIS.length < 9 || tgl_lahir.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
+              <button :disabled="NIS.length < 9 || pin.length < 8" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SuratPernyataan">
                 KIRIM
               </button>
               <div class="modal fade" id="SuratPernyataan" tabindex="-1">
@@ -75,7 +75,7 @@
         </div>
         <div class="text-center">
           <div class="display-6 mt-3 fw-bold prototype">{{ result.nama }}</div>
-          <div class="fs-6 text-grey">{{ result.ttl }}</div>
+          <div class="fs-6 text-grey">{{ result.tempat_lahir }}, {{ result.tanggal_lahir }}</div>
           <div class="fs-6 text-grey">{{ result.kelas }}</div>
           <div class="fs-6 mb-3 text-grey">{{ result.kompetensi}}</div>
           <span class="fs-6">dinyatakan 
@@ -99,7 +99,7 @@ import { vConfetti } from '@neoconfetti/vue';
 const client = useSupabaseClient();
 const mismatch = ref(false);
 const NIS = ref("");
-const tgl_lahir = ref("");
+const pin = ref("");
 const tahun = new Date().getFullYear()
 const result = ref([]);
 const isResult = ref(false);
@@ -141,10 +141,10 @@ const onPeriksa = async () => {
     timeNotTheSame.value = false
 
     const { data, error } = await client
-      .from("kelulusan_siswa")
+      .from("kelulusan_siswa_dev")
       .select('*')
       .eq("status", 1)
-      .match({ nis: NIS.value, password: tgl_lahir.value })
+      .match({ nis: NIS.value, pin: pin.value })
       .single()
     if (data) {
       await getSetting()
@@ -167,7 +167,7 @@ const reset = () => {
   isResult.value = false
   result.value = []
   NIS.value = ""
-  tgl_lahir.value = ""
+  pin.value = ""
   mismatch.value = false
   checking.value = false
   isConfetti.value = false
