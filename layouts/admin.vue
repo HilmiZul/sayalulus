@@ -9,8 +9,9 @@
         </span>
         <span v-else>{{ setting?.nama_sekolah }}</span>
       </h6>
+
       <div class="col-md-3">
-        <div class="card bg-shadow border-0 mb-4">
+        <div class="card bg-shadow border-0 mb-4 sticky">
           <div class="card-body p-2">
             <ul class="list-group">
               <nuxt-link to="/admin" class="list-link border-bottom border-1">
@@ -47,6 +48,7 @@
           </div>
         </div>
       </div>
+
       <div class="col">
         <slot />
       </div>
@@ -208,5 +210,11 @@ canvas {
 
 .keterangan {
   cursor: pointer;
+}
+
+.sticky {
+  position: sticky;
+  top: 2em;
+  left: 0
 }
 </style>
