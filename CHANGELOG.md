@@ -1,6 +1,7 @@
 # Changelog
 
 ### v2.2.1 (3 Mei 2026)
+- Sticky position Navbar
 - Bug fixes & Improvement:
   - validate input and model 
   - bug fix count TL
