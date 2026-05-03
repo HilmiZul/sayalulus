@@ -1,5 +1,11 @@
 # Changelog
 
+### v2.2.1 (3 Mei 2026)
+- Bug fixes & Improvement:
+  - validate input and model 
+  - bug fix count TL
+  - update table structure
+
 ### v2.2 (1 Mei 2026)
 - Replace Navbar with Header image logo
 - Add dynamic URL image logo in setting
