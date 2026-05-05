@@ -1,9 +1,14 @@
 <template>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <div class="text-center fs-3 prototype mb-4">
-        Menuju Pengumuman.
+      <div class="text-center fs-3 prototype my-4">
+        Menuju Pengumuman Kelulusan.
       </div>
+
+      <div class="text-center fs-3 prototype my-4">
+        Mohon Sabar Menunggu.
+      </div>
+
       <div v-if="isLoading" class="card text-center my-3 py-3 bg-shadow border-0"><i class="bi bi-hourglass-split"></i> Sedang memuat</div>
       <Countdown
         v-else
@@ -11,15 +16,15 @@
         v-slot="{ days, hours, minutes, seconds }"
         @end="onCountdownEnd"
         >
-        <div class="text-center my-3 py-3 card bg-shadow border-0">
-          <div class="timer">
-            <h1 class="fs-1">{{ days }}</h1> hari
-            <h1 class="fs-1">{{ hours }}</h1> jam
-            <h1 class="fs-1">{{ minutes }}</h1> menit
-            <h1 class="fs-1">{{ seconds }}</h1> detik
-          </div>
-          <div class="small mt-3 text-muted">{{ tglString }}</div>
-        </div>
+        <!-- <div class="text-center my-3 py-3 card bg-shadow border-0"> -->
+        <!--   <div class="timer"> -->
+        <!--     <h1 class="fs-1">{{ days }}</h1> hari -->
+        <!--     <h1 class="fs-1">{{ hours }}</h1> jam -->
+        <!--     <h1 class="fs-1">{{ minutes }}</h1> menit -->
+        <!--     <h1 class="fs-1">{{ seconds }}</h1> detik -->
+        <!--   </div> -->
+        <!--   <div class="small mt-3 text-muted">{{ tglString }}</div> -->
+        <!-- </div> -->
       </Countdown>
     </div>
   </div>
