@@ -1,5 +1,8 @@
 # Changelog
 
+### v2.2.2 (5 Mei 2026)
+- Hide time remaining and display text only.
+
 ### v2.2.1 (3 Mei 2026)
 - Sticky position Navbar
 - Bug fixes & Improvement:
