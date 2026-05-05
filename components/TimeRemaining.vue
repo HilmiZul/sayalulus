@@ -9,7 +9,11 @@
         Mohon Sabar Menunggu.
       </div>
 
-      <div v-if="isLoading" class="card text-center my-3 py-3 bg-shadow border-0"><i class="bi bi-hourglass-split"></i> Sedang memuat</div>
+      <!-- <div v-if="isLoading" class="card text-center my-3 py-3 bg-shadow border-0"> -->
+      <!--   <i class="bi bi-hourglass-split"></i> Sedang memuat -->
+      <!-- </div> -->
+      <div v-if="isLoading">
+      </div>
       <Countdown
         v-else
         :date="DDay"
